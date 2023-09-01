@@ -1,6 +1,5 @@
 ---
-title: How-to Guide landing page template
-type: template
+title: Australian BioCommons *Finder services test
 contributors: 
 description: Add a plain text description here.
 affiliations: 
@@ -10,11 +9,6 @@ affiliations:
 ## About 
 
 > Add 2-3 sentences here explaining the purpose of the specific guide you are creating.
-
-
-## Guide sections
-
-> You can use this section to add navigation tiles for the pages you have created as part of your guide.
 
 
 ## Please cite this guide as follows
