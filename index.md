@@ -18,7 +18,5 @@ Table last updated **2024-01-12**.
 - When a tool has been containerised to allow for easier installation on any compute infrastructure, a link to the containerised software that can be downloaded from [BioContainers](https://biocontainers.pro/) is shown in the **Containers available? (BioContainers)** column. 
 - The source material for the table is currently manually curated, and while we endeavour to keep the information as current as possible, there is a natural limit to the volume of information maintained here. Production of this information will be automated over time, and tools that are not relevant for bioinformatics analyses removed.
 
-### How was the list generated?
 
-Please see the [GitHub repository](https://github.com/AustralianBioCommons/australianbiocommons.github.io) for more details.
 
