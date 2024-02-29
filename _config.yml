@@ -1,10 +1,10 @@
-title: ""
+title: "ToolFinder"
 # This appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
-#topnav_title: Website title
+topnav_title: ToolFinder
 # Optional: this appears on the top navigation bar next to the main_logo.svg icon
 
-description: "A bioinformatics focused How-to Guide"
+description: "ToolFinder"
 # Metadata description of the website
 
 remote_theme: ELIXIR-Belgium/elixir-toolkit-theme
