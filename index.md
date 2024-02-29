@@ -5,6 +5,9 @@ datatable: true
 ---
 
 
+This page lists bioinformatics tools and software that are installed across several of the [**BioCommons infrastructure partner systems**](https://support.biocommons.org.au/support/solutions/articles/6000251977-compute-systems-at-the-biocommons-partner-infrastructures). Tool / software status on other infrastructure partner systems will be added over time.
+
+
 <div markdown="0"> 
 {% include table.html %}
 </div>
