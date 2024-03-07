@@ -2,6 +2,7 @@
 title: About
 description: Add a plain text description here.
 sidebar: false
+toc: true
 ---
 
 
