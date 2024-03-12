@@ -201,7 +201,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           </div>
         </td>
         <td>{% if tool.description %} {{tool.description}} {%- endif %}</td>
-        <td>
+        <td class="dt-center">
           {% if tool.registry-link != blank %}
           <a
             href="{{tool.registry-link}}"
