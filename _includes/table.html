@@ -1,272 +1,337 @@
-<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/datatables.min.css" rel="stylesheet">
+<link
+  href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/datatables.min.css"
+  rel="stylesheet"
+/>
 
 <style>
-    div.dt-buttons {
-        margin-right: 24px;
-    }
-    .biotools-button {
-        width: 84px;
-        background-color: #FFA500;
-    }
+  div.dt-buttons {
+    margin-right: 24px;
+  }
+  .biotools-button {
+    width: 84px;
+    background-color: #ffa500;
+  }
+  .tooltable th,
+  .tooltable td {
+    vertical-align: middle;
+  }
 </style>
 
 <div class="d-flex flex-column">
-    <div class="mb-2">
-        <button class="btn btn-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapseExample">
-            Can’t find the software you need? Click here to see other options for finding software
-        </button>
-        <div class="collapse" id="collapse1">
-            <div class="card card-body">
-                <ul>
-                    <li><a href="https://bio.tools/">bio.tools registry</a>: discover software tools</li>
-                    <li><a href="https://biocontainers.pro/registry">BioContainers registry</a>: discover and access containers for software tools</li>
-                    <li><a href="https://toolshed.g2.bx.psu.edu/">Galaxy toolshed</a>: discover tools which can be requested for installation on Galaxy Australia</li>
-                    <li><a href="https://dockstore.org/search?entryType=tools&searchMode=files">Dockstore tool search</a>: discover containers for single tools</li>
-                </ul>
-            </div>
-        </div>
+  <div class="mb-2">
+    <button
+      class="btn btn-secondary text-light"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapse1"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      Can’t find the software you need? Click here to see other options for
+      finding software
+    </button>
+    <div class="collapse" id="collapse1">
+      <div class="card card-body">
+        <ul>
+          <li>
+            <a href="https://bio.tools/">bio.tools registry</a>: discover
+            software tools
+          </li>
+          <li>
+            <a href="https://biocontainers.pro/registry"
+              >BioContainers registry</a
+            >: discover and access containers for software tools
+          </li>
+          <li>
+            <a href="https://toolshed.g2.bx.psu.edu/">Galaxy toolshed</a>:
+            discover tools which can be requested for installation on Galaxy
+            Australia
+          </li>
+          <li>
+            <a
+              href="https://dockstore.org/search?entryType=tools&searchMode=files"
+              >Dockstore tool search</a
+            >: discover containers for single tools
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 
-    <div>
-        <button class="btn btn-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapseExample">
-            Click to find out how to request installation of software on ToolFinder listed infrastructures
-        </button>
-        <div class="collapse" id="collapse2">
-            <div class="card card-body">
-                <table class="table table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th scope="col" class="w-25">Infrastructure</th>
-                        <th scope="col">Process</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                      <tr>
-                        <td><a href="https://usegalaxy.org.au/">Galaxy Australia</a></td>
-                        <td>Complete a <a href="https://site.usegalaxy.org.au/request/tool">tool install request</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="https://nci.org.au/">NCI</a></td>
-                        <td><a href="https://opus.nci.org.au/display/Help/5.+Software+Applications">Contact NCI</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="https://pawsey.org.au/">Pawsey</a></td>
-                        <td>Visit the <a href="https://support.pawsey.org.au/portal/servicedesk/customer/user/login?destination=portals">Helpdesk Portal</a> or email: help@pawsey.org.au with your request</td>
-                      </tr>
-                      <tr>
-                        <td><a href="https://www.qriscloud.org.au/">QRIScloud</a> / <a href="https://rcc.uq.edu.au/">UQ-RCC</a></td>
-                        <td>Complete a <a href="https://support.qcif.edu.au/Request-for-installation-of-QRIScloud-HPC">tool install request</a></td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <div>
+    <button
+      class="btn btn-secondary text-light"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapse2"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      Click to find out how to request installation of software on ToolFinder
+      listed infrastructures
+    </button>
+    <div class="collapse" id="collapse2">
+      <div class="card card-body">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="w-25">Infrastructure</th>
+              <th scope="col">Process</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr>
+              <td><a href="https://usegalaxy.org.au/">Galaxy Australia</a></td>
+              <td>
+                Complete a
+                <a href="https://site.usegalaxy.org.au/request/tool"
+                  >tool install request</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><a href="https://nci.org.au/">NCI</a></td>
+              <td>
+                <a
+                  href="https://opus.nci.org.au/display/Help/5.+Software+Applications"
+                  >Contact NCI</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><a href="https://pawsey.org.au/">Pawsey</a></td>
+              <td>
+                Visit the
+                <a
+                  href="https://support.pawsey.org.au/portal/servicedesk/customer/user/login?destination=portals"
+                  >Helpdesk Portal</a
+                >
+                or email: help@pawsey.org.au with your request
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://www.qriscloud.org.au/">QRIScloud</a> /
+                <a href="https://rcc.uq.edu.au/">UQ-RCC</a>
+              </td>
+              <td>
+                Complete a
+                <a
+                  href="https://support.qcif.edu.au/Request-for-installation-of-QRIScloud-HPC"
+                  >tool install request</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>
 
+{%- if include.tag %} {%- assign tools = site.data.data | add_related_pages |
+where:"related_pages", include.tag | sort_natural: "name" %} {%- else %} {%-
+assign tools = site.data.data | add_related_pages | sort_natural: "name" %} {%-
+endif %} {%- assign country_pages = site.pages | where_exp: "item",
+"item.search_exclude != true" | where_exp:"item","item.national_resources !=
+nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 
-{%- if include.tag %}
-{%- assign tools = site.data.data | add_related_pages | where:"related_pages", include.tag |
-sort_natural: "name" %}
-{%- else %}
-{%- assign tools = site.data.data | add_related_pages | sort_natural: "name" %}
-{%- endif %}
-{%- assign country_pages = site.pages | where_exp: "item", "item.search_exclude != true" |
-where_exp:"item","item.national_resources != nil" %}
-{%- unless tools.size == 0 or tools == nil %}
-{%- if include.tag %}
 <h2>Relevant tools and resources</h2>
 {%- endif %}
 
-<div class="table-responsive mw-100 my-5">
-    <table class="tooltable table display table-bordered table-hover table-striped">
-        <thead>
-            <tr>
-                <th class="text-nowrap">Tool Name
-                    {%- if include.tag -%}
-                    <a data-bs-toggle="tooltip"
-                        data-bs-original-title="This is a curated list which means that not all tools or resources that exist for this topic are listed here. This is mainly because we do not intend to be a registry. In most cases you will only find back the tools or resources that are mentioned in this page.">
-                        <i class="fa-solid fa-info-circle"></i>
-                    </a>{%- endif %}
-                </th>
-                <th>Description</th>
-                <th>Registry link</th>
-                <th>Tool identifier (e.g. module name)</th>
-                <th>Topic(s)</th>
-                <th>Publications</th>
-                <th>Containers available? (BioContainers)</th>
-                <th>License</th>
-                <th>Resources / documentation</th>
-                <th>Galaxy Australia</th>
-                <th>NCI (Gadi)</th>
-                <th>NCI (if89)</th>
-                <th>Pawsey (Setonix)</th>
-                <th>QRIScloud / UQ-RCC (Bunya)</th>
-            </tr>
-        </thead>
-        <tbody>
-            {%- for tool in tools %}
-            {% assign rowId = "row" | append: forloop.index %}
-            <tr>
-                {%- assign instances_tool = 0 %}
-                {%- assign total_county_tools = 0 %}
-                {%- assign query = "related_pages." | append: page.type %}
-                {%- for country_page in country_pages %}
-                {%- assign instance_matches = country_page.national_resources | where: "instance_of", tool.id |
-                where_exp:"resource","resource.related_pages != nil" | where: query, include.tag %}
-                {%- assign tool_matches = country_page.national_resources | where_exp:"resource","resource.related_pages
-                != nil" | where: query, include.tag %}
-                {%- unless tool_matches.size == 0 %}
-                {%- assign total_county_tools = total_county_tools | plus: tool_matches.size %}
-                {%- endunless %}
-                {%- unless instance_matches.size == 0 %}
-                {%- assign instances_tool = instances_tool | plus: instance_matches.size %}
-                {%- endunless %}
-                {%- endfor %}
-
-                <td>
-                    <div>
-                        {% if tool.homepage %}
-                        <a href="{{tool.homepage}}">{{tool.name}}</a>
-                        {%- else %}
-                        {{tool.name}}
-                        {%- endif %}
-                    </div>
-                </td>
-
-                <td>
-                    {% if tool.description %}
-                    {{tool.description}}
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {% if tool.registry-link != blank %}
-                    <a href="{{tool.registry-link}}" class="badge text-center px-4 biotools-button">
-                        <img src="https://bio.tools/img/elixir_biotools_transparent.png">
-                    </a>
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {% if tool.id %}
-                    {{tool.id}}
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {% if tool.topics %}
-                    {%- for topic in tool.topics %}
-                    <span class="badge text-bg-light mb-2 text-wrap text-start">{{topic}}</span>
-                    {%- endfor %}
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {% if tool.publications %}
-                    {%- for publication in tool.publications %}
-                    <div class="mb-2">
-                        <a href="{{publication.url}}">{{publication.title | truncate: 60}}</a>
-                    </div>
-                    {%- endfor %}
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {% if tool.biocontainers != blank %}
-                    <a href="https://biocontainers.pro/tools/{{tool.biocontainers}}">{{tool.name}}</a>
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {% if tool.license != blank %}
-                    {{tool.license}}
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {% if tool.resource-documentation == tool.resource-documentation %}
-                    <a href="{{tool.resource-documentation}}">{{tool.resource-documentation}}</a> 
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {%- if tool.galaxy.size > 1 %}
-                    <p class="d-inline-flex gap-1">
-                        <a data-bs-toggle="collapse" href="#{{ rowId }}" aria-expanded="false"
-                            aria-controls="{{ rowId }}">
-                            {{tool.galaxy.size}} tools &thinsp;<i class="fa-solid fa-square-plus"></i>
-                        </a>
-                    </p>
-                    <div class="collapse" id="{{ rowId }}">
-                        {%- for galaxy-tool in tool.galaxy %}
-                        <div class="mt-2"><a href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a></div>
-                        {%- endfor %}
-                    </div>
-                    {%- else %}
-                    <a href="{{tool.galaxy[0].url}}">{{tool.galaxy[0].title}}</a>
-                    {%- endif %}
-                </td>
-
-                <td>
-                    {% if tool.nci-gadi != blank %}
-                    {%- for gadi in tool.nci-gadi %}
-                    <span class="badge text-bg-light mb-2">{{gadi}}</span>
-                    {%- endfor %}
-                    {%- endif %}
-                </td>
-                <td>
-                    {% if tool.nci-if89 %}
-                    <span class="badge text-bg-light mb-2">{{tool.nci-if89}}</span>
-                    {%- endif %}
-                </td>
-                <td>
-                    {% if tool.pawsey %}
-                    <span class="badge text-bg-light mb-2">{{tool.pawsey}}</span>
-                    {%- endif %}
-                </td>
-                <td>
-                    {% if tool.bunya %}
-                    <span class="badge text-bg-light mb-2">{{tool.bunya}}</span>
-                    {%- endif %}
-                </td>
-            </tr>
+<div class="my-5 table-responsive">
+  <table
+    class="tooltable table display table-bordered table-hover table-striped w-100"
+  >
+    <thead>
+      <tr>
+        <th class="dt-center text-white bg-primary" colspan="9">
+          Tool metadata
+        </th>
+        <th class="dt-center text-white bg-secondary" colspan="5">
+          Availability on Australian compute infrastructures
+        </th>
+      </tr>
+      <tr>
+        <th class="text-nowrap">
+          Tool Name {%- if include.tag -%}
+          <a
+            data-bs-toggle="tooltip"
+            data-bs-original-title="This is a curated list which means that not all tools or resources that exist for this topic are listed here. This is mainly because we do not intend to be a registry. In most cases you will only find back the tools or resources that are mentioned in this page."
+          >
+            <i class="fa-solid fa-info-circle"></i> </a
+          >{%- endif %}
+        </th>
+        <th>Description</th>
+        <th>Registry link</th>
+        <th>Tool identifier (e.g. module name)</th>
+        <th>Topic(s)</th>
+        <th>Publications</th>
+        <th>Containers available? (BioContainers)</th>
+        <th>License</th>
+        <th>Resources / documentation</th>
+        <th>Galaxy Australia</th>
+        <th>NCI (Gadi)</th>
+        <th>NCI (if89)</th>
+        <th>Pawsey (Setonix)</th>
+        <th>QRIScloud / UQ-RCC (Bunya)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for tool in tools %} {% assign rowId = "row" | append: forloop.index
+      %}
+      <tr>
+        {%- assign instances_tool = 0 %} {%- assign total_county_tools = 0 %}
+        {%- assign query = "related_pages." | append: page.type %} {%- for
+        country_page in country_pages %} {%- assign instance_matches =
+        country_page.national_resources | where: "instance_of", tool.id |
+        where_exp:"resource","resource.related_pages != nil" | where: query,
+        include.tag %} {%- assign tool_matches = country_page.national_resources
+        | where_exp:"resource","resource.related_pages != nil" | where: query,
+        include.tag %} {%- unless tool_matches.size == 0 %} {%- assign
+        total_county_tools = total_county_tools | plus: tool_matches.size %} {%-
+        endunless %} {%- unless instance_matches.size == 0 %} {%- assign
+        instances_tool = instances_tool | plus: instance_matches.size %} {%-
+        endunless %} {%- endfor %}
+        <td>
+          <div>
+            {% if tool.homepage %}
+            <a href="{{tool.homepage}}">{{tool.name}}</a>
+            {%- else %} {{tool.name}} {%- endif %}
+          </div>
+        </td>
+        <td>{% if tool.description %} {{tool.description}} {%- endif %}</td>
+        <td class="dt-center">
+          {% if tool.registry-link != blank %}
+          <a
+            href="{{tool.registry-link}}"
+            class="badge text-center px-4 biotools-button"
+          >
+            <img src="https://bio.tools/img/elixir_biotools_transparent.png" />
+          </a>
+          {%- endif %}
+        </td>
+        <td>{% if tool.id %} {{tool.id}} {%- endif %}</td>
+        <td class="dt-center">
+          {% if tool.topics %} {%- for topic in tool.topics %}
+          <span class="badge text-bg-light mb-2 text-wrap text-center"
+            >{{topic}}</span
+          >
+          {%- endfor %} {%- endif %}
+        </td>
+        <td>
+          {% if tool.publications %} {%- for publication in tool.publications %}
+          <div class="mb-2">
+            <a href="{{publication.url}}"
+              >{{publication.title | truncate: 60}}</a
+            >
+          </div>
+          {%- endfor %} {%- endif %}
+        </td>
+        <td>
+          {% if tool.biocontainers != blank %}
+          <a href="https://biocontainers.pro/tools/{{tool.biocontainers}}"
+            >{{tool.name}}</a
+          >
+          {%- endif %}
+        </td>
+        <td>{% if tool.license != blank %} {{tool.license}} {%- endif %}</td>
+        <td>
+          {% if tool.resource-documentation == tool.resource-documentation %}
+          <a href="{{tool.resource-documentation}}"
+            >{{tool.resource-documentation}}</a
+          >
+          {%- endif %}
+        </td>
+        <td>
+          {%- if tool.galaxy.size > 1 %}
+          <p class="d-inline-flex gap-1">
+            <a
+              data-bs-toggle="collapse"
+              href="#{{ rowId }}"
+              aria-expanded="false"
+              aria-controls="{{ rowId }}"
+            >
+              {{tool.galaxy.size}} tools &thinsp;<i
+                class="fa-solid fa-square-plus"
+              ></i>
+            </a>
+          </p>
+          <div class="collapse" id="{{ rowId }}">
+            {%- for galaxy-tool in tool.galaxy %}
+            <div class="mt-2">
+              <a href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a>
+            </div>
             {%- endfor %}
-        </tbody>
-    </table>
+          </div>
+          {%- else %}
+          <a href="{{tool.galaxy[0].url}}">{{tool.galaxy[0].title}}</a>
+          {%- endif %}
+        </td>
+        <td>
+          {% if tool.nci-gadi != blank %} {%- for gadi in tool.nci-gadi %}
+          <span class="badge text-bg-light mb-2">{{gadi}}</span>
+          {%- endfor %} {%- endif %}
+        </td>
+        <td>
+          {% if tool.nci-if89 %}
+          <span class="badge text-bg-light mb-2">{{tool.nci-if89}}</span>
+          {%- endif %}
+        </td>
+        <td>
+          {% if tool.pawsey %}
+          <span class="badge text-bg-light mb-2">{{tool.pawsey}}</span>
+          {%- endif %}
+        </td>
+        <td>
+          {% if tool.bunya %}
+          <span class="badge text-bg-light mb-2">{{tool.bunya}}</span>
+          {%- endif %}
+        </td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
 </div>
 {%- unless total_county_tools == 0 or include.tag == nil %}
-<a class="btn btn-primary" id="national-resources-button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
-    role="button" aria-expanded="false" aria-controls="{{hide_ids}}">
-    View national resources <span class="badge bg-white text-primary ms-2">{{total_county_tools}}</span>
+<a
+  class="btn btn-primary"
+  id="national-resources-button"
+  data-bs-toggle="collapse"
+  data-bs-target=".multi-collapse"
+  role="button"
+  aria-expanded="false"
+  aria-controls="{{hide_ids}}"
+>
+  View national resources
+  <span class="badge bg-white text-primary ms-2">{{total_county_tools}}</span>
 </a>
 {%- endunless %}
 <div id="skip-tool-table"></div>
 {%- endunless %}
 
-
 <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/datatables.min.js"></script>
 <script>
-    $(document).ready(function() {
-        var table = $('#DataTables_Table_0').DataTable();
-        table.columns( [1,3,7,8] ).visible( false );
-        new $.fn.dataTable.Buttons( table, {
-            buttons: [
-                {
-                    extend: 'copy',
-                    className: 'btn btn-light'
-                },
-                {
-                    extend: 'csv',
-                    className: 'btn btn-light'
-                },
-                {
-                    extend: 'colvis',
-                    className: 'btn btn-light'
-                }
-            ]
-        } );
+  $(document).ready(function () {
+    var table = $("#DataTables_Table_0").DataTable();
+    table.columns([1, 3, 7, 8]).visible(false);
+    new $.fn.dataTable.Buttons(table, {
+      buttons: [
+        {
+          extend: "copy",
+          className: "btn btn-light",
+        },
+        {
+          extend: "csv",
+          className: "btn btn-light",
+        },
+        {
+          extend: "colvis",
+          className: "btn btn-light",
+        },
+      ],
+    });
 
-        table.buttons().container().prependTo( '#DataTables_Table_0_length' );
-    } );
+    table.buttons().container().prependTo("#DataTables_Table_0_length");
+  });
 </script>
