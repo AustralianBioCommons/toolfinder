@@ -10,6 +10,10 @@ This page lists bioinformatics tools and software that are installed across seve
 
 {% include callout.html type="important" content="`NCI (if89)` in the table refers to the [Australian BioCommons Tools and Workflows repository](https://australianbiocommons.github.io/ables/if89/), located in project allocation `if89` at the National Computational Infrastructure (NCI)." %}
 
+**Can’t find the software you need?** Here are some other options for finding software: {% tool "biotools" %}, {% tool "biocontainers" %},  {% tool "galaxy-toolshed" %}, {% tool "dockstore-tools" %}
+
+**Need to request installation of software on ToolFinder listed infrastructures?** {% tool "galaxy-new-tool" %}, {% tool "nci-new-tool" %}, {% tool "nci-if89-new-tool" %}, {% tool "pawsey-new-tool" %}, {% tool "rcc-new-tool" %}
+
 
 <div markdown="0"> 
 {% include table.html %}
