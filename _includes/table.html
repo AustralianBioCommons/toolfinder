@@ -15,6 +15,13 @@
   .tooltable td {
     vertical-align: middle;
   }
+  .clear-all-button {
+    display: none;
+    cursor: pointer;
+  }
+  .clear-all-button:hover {
+    opacity: 0.6;
+  }
 </style>
 
 <div class="d-flex flex-column">
@@ -145,6 +152,20 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
   >
     <thead>
       <tr>
+        <th colspan="14">
+          <div class="d-flex align-items-center">
+            <div class="py-2">Filter by Topic(s):</div>
+            <div class="filter-message fw-medium text-black-50 ms-3">
+              Please click on a topic to filter results by topics
+            </div>
+            <div class="clear-all-button text-danger fw-medium ms-3 me-2">
+              Clear All Filters
+            </div>
+            <div id="filterContainer"></div>
+          </div>
+        </th>
+      </tr>
+      <tr>
         <th class="dt-center text-white bg-primary" colspan="9">
           Tool metadata
         </th>
@@ -204,7 +225,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         <td class="dt-center">
           {% if tool.registry-link != blank %}
           <a
-            href="{{tool.registry-link}}"
+            href="https://bio.tools/{{tool.registry-link}}"
             class="badge text-center px-4 biotools-button"
           >
             <img src="https://bio.tools/img/elixir_biotools_transparent.png" />
@@ -214,9 +235,11 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         <td>{% if tool.id %} {{tool.id}} {%- endif %}</td>
         <td class="dt-center">
           {% if tool.topics %} {%- for topic in tool.topics %}
-          <span class="badge text-bg-light mb-2 text-wrap text-center"
-            >{{topic}}</span
+          <button
+            class="btn btn-light badge topic-badge text-bg-light mb-2 text-wrap text-center"
           >
+            {{topic}}
+          </button>
           {%- endfor %} {%- endif %}
         </td>
         <td>
@@ -333,5 +356,113 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
     });
 
     table.buttons().container().prependTo("#DataTables_Table_0_length");
+
+    let searchTerm = "";
+    searchFilter(table, searchTerm);
+
+    // Event listener for Clear All Filters button
+    document
+      .querySelector(".clear-all-button")
+      .addEventListener("click", function () {
+        clearAllFilters();
+      });
+
+    // Event listener for Topic Badges
+    var badges = document.querySelectorAll(".topic-badge");
+    badges.forEach(function (badge) {
+      badge.addEventListener("click", function () {
+        handleBadgeClick(this);
+      });
+    });
+
+    function handleBadgeClick(badge) {
+      var topic = badge.textContent.trim();
+
+      // Check if a filter badge with the same text already exists
+      if (!filterBadgeExists(topic)) {
+        var filterBadge = document.createElement("span");
+        filterBadge.className =
+          "btn btn-light px-2 border border-dark text-dark btn-sm rounded-pill fw-bold mx-2 text-wrap filter-badge";
+        filterBadge.textContent = topic;
+
+        // Add '×' symbol for removing the filter chip
+        var removeButton = document.createElement("span");
+        removeButton.innerHTML = " &#x2715;";
+        filterBadge.appendChild(removeButton);
+
+        searchTerm = `${searchTerm.trim()} ${topic}`.trim();
+        searchFilter(table, searchTerm);
+
+        // Add click event to remove the filter badge
+        filterBadge.addEventListener("click", function () {
+          handleBadgeRemoval(this);
+        });
+
+        document.getElementById("filterContainer").appendChild(filterBadge);
+
+        document.querySelector(".filter-message").style.display = "none";
+        document.querySelector(".clear-all-button").style.display =
+          "inline-block";
+      }
+    }
+
+    function searchFilter(table, searchTerm) {
+      table
+        .columns(4)
+        .search(searchTerm, {
+          boundary: true,
+        })
+        .draw();
+
+      // Add click event to new badges displayed
+      var badges = document.querySelectorAll(".topic-badge");
+      badges.forEach(function (badge) {
+        badge.addEventListener("click", function () {
+          handleBadgeClick(this);
+        });
+      });
+    }
+
+    // Function to check if a filter badge with the same text already exists
+    function filterBadgeExists(topic) {
+      var filterBadges = document.querySelectorAll(".filter-badge");
+      for (var i = 0; i < filterBadges.length; i++) {
+        if (filterBadges[i].textContent.includes(topic)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // Function to handle removal of filter badge
+    function handleBadgeRemoval(badge) {
+      badge.parentNode.removeChild(badge);
+
+      const filterBadgeText = badge.textContent.replace(" \u2715", "");
+      searchTerm = searchTerm
+        .replace(filterBadgeText, "")
+        .replace(/\s+/g, " ")
+        .trim();
+      searchFilter(table, searchTerm);
+
+      if (document.querySelectorAll(".filter-badge").length === 0) {
+        document.querySelector(".filter-message").style.display =
+          "inline-block";
+        document.querySelector(".clear-all-button").style.display = "none";
+      }
+    }
+
+    function clearAllFilters() {
+      var filterBadges = document.querySelectorAll(".filter-badge");
+      filterBadges.forEach(function (badge) {
+        badge.parentNode.removeChild(badge);
+      });
+
+      searchTerm = "";
+      searchFilter(table, searchTerm);
+
+      document.querySelector(".filter-message").style.display = "inline-block";
+      document.querySelector(".clear-all-button").style.display = "none";
+    }
   });
 </script>
