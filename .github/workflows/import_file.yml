@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add data/data.yaml
+          git add _data/data.yml
           git commit -m "Updated the data.yml sourced from australianbiocommons.github.io"
           git push
           fi
