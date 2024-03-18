@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "{{ github.actor }}"
           git config user.email "{{ github.actor }}@users.noreply.github.com"
-          git add data/data.yml
+          git add _data/data.yml
           git commit -m "Updated the data.yml sourced from australianbiocommons.github.io"
           git push
           fi
