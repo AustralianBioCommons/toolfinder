@@ -35,9 +35,5 @@ jobs:
           git config user.email "{{ github.actor }}@users.noreply.github.com"
           git add _data/data.yml
           git commit -m "Updated the data.yml sourced from australianbiocommons.github.io"
-
-      - name: Push
-        if: env.exiting != 'true'
-        run: |
-            git push
+          git push
           fi
