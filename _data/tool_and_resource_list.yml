@@ -3,15 +3,15 @@
 # Thanks to @bedroesb for helping to modify the original include
 
 - id: biotools
-  description:
+  description: Discover software tools.
   url: https://bio.tools/
   name: bio.tools
 - id: biocontainers
-  description:
+  description: Discover and access containers for software tools.
   url: https://biocontainers.pro/registry
   name: BioContainers
 - id: galaxy-toolshed
-  description:
+  description: Discover tools which can be requested for installation on Galaxy Australia.
   url: https://toolshed.g2.bx.psu.edu/
   name: Galaxy Tool Shed
 - id: dockstore-tools
