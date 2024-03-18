@@ -1,0 +1,43 @@
+name: Pull data.yml from australianbiocommons.github.io
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  pull-file:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          repository: AustralianBioCommons/australianbiocommons.github.io
+          path: temporary_folder
+
+      - name: Update
+        run: |
+          cd temporary_folder
+          cp -u _data/data.yml ../
+          cd ..
+
+      - name: Check for changes
+        run: |
+          if git diff --quiet; then
+            echo "There is no change in data.yml."
+            echo "exiting = true" >> $GITHUB_ENV
+          fi
+
+      - name: Commit
+        if: env.exiting != 'true'
+        run: |
+          git config user.name "{{ github.actor }}"
+          git config user.email "{{ github.actor }}@users.noreply.github.com"
+          git add _data/data.yml
+          git commit -m "Updated the data.yml sourced from AustralianBioCommons/australianbiocommons.github.io"
+
+      - name: Push
+        if: env.exiting != 'true'
+        run: |
+            git push
+          fi
