@@ -31,6 +31,9 @@ This page lists bioinformatics tools and software that are installed across seve
       <div class="card card-body">
         <ul>
           <li>
+            {% tool "biotools" %}
+          </li>
+          <li>
             <a href="https://bio.tools/">bio.tools registry</a>: discover
             software tools
           </li>
