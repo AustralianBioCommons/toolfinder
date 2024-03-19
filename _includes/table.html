@@ -11,6 +11,9 @@
     width: 84px;
     background-color: #ffa500;
   }
+  .biotools-button:hover {
+    opacity: 0.8;
+  }
   .tooltable th,
   .tooltable td {
     vertical-align: middle;
@@ -22,9 +25,30 @@
   .clear-all-button:hover {
     opacity: 0.6;
   }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .popover {
+    display: flex;
+    flex-direction: column; 
+    max-height: 50vh;
+    max-width: 840px;
+  }
+  .popover-body {
+    overflow: scroll;
+  }
+  .popover a:hover {
+    text-decoration: underline;
+  }
+  .col-publications,
+  .col-galaxy {
+    min-width: 180px;
+  }
+  .col-badge {
+    width: 180px !important;
+    min-width: 120px;
+  }
 </style>
-
-
 
 {%- if include.tag %} {%- assign tools = site.data.data | add_related_pages |
 where:"related_pages", include.tag | sort_natural: "name" %} {%- else %} {%-
@@ -37,9 +61,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 {%- endif %}
 
 <div class="my-5 table-responsive">
-  <table
-    class="tooltable table display table-bordered table-hover table-striped w-100"
-  >
+  <table class="tooltable table display table-bordered table-striped w-100">
     <thead>
       <tr>
         <th colspan="14">
@@ -77,15 +99,15 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         <th>Registry link</th>
         <th>Tool identifier (e.g. module name)</th>
         <th>Topic(s)</th>
-        <th>Publications</th>
+        <th class="col-publications">Publications</th>
         <th>Containers available? (BioContainers)</th>
         <th>License</th>
         <th>Resources / documentation</th>
-        <th>Galaxy Australia</th>
+        <th class="col-galaxy">Galaxy Australia</th>
         <th>NCI (Gadi)</th>
         <th>NCI (if89)</th>
         <th>Pawsey (Setonix)</th>
-        <th>QRIScloud / UQ-RCC (Bunya)</th>
+        <th class="col-badge">QRIScloud / UQ-RCC (Bunya)</th>
       </tr>
     </thead>
     <tbody>
@@ -133,50 +155,70 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- endfor %} {%- endif %}
         </td>
         <td>
-          {% if tool.publications %} {%- for publication in tool.publications %}
-          <div class="mb-2">
-            <a href="{{publication.url}}"
-              >{{publication.title | truncate: 60}}</a
-            >
-          </div>
-          {%- endfor %} {%- endif %}
+          {%- if tool.publications.size > 1 %}
+          <a
+            class="text-primary cursor-pointer"
+            tabindex="0"
+            data-bs-toggle="popover"
+            data-bs-placement="bottom"
+            data-bs-trigger="focus"
+            data-bs-html="true"
+            data-bs-content="
+              <ul class='ps-3 mb-0'>
+              {%- for publication in tool.publications %}
+                <li>
+                  <a href='{{publication.url}}' target='_blank' class='fs-6 lh-lg'>{{publication.title}}</a>
+                </li>
+              {%- endfor %}
+              </ul>
+              "
+          >
+            {{tool.publications.size}} publications
+            <i class="fa-solid fa-circle-plus ms-1"></i>
+          </a>
+          {%- else %}
+          <a href="{{tool.publications[0].url}}">
+            {{tool.publications[0].title}}
+          </a>
+          {%- endif %}
         </td>
         <td>
           {% if tool.biocontainers != blank %}
-          <a href="https://biocontainers.pro/tools/{{tool.biocontainers}}"
-            >{{tool.name}}</a
-          >
+          <a href="https://biocontainers.pro/tools/{{tool.biocontainers}}">
+            {{tool.name}}
+          </a>
           {%- endif %}
         </td>
         <td>{% if tool.license != blank %} {{tool.license}} {%- endif %}</td>
         <td>
           {% if tool.resource-documentation == tool.resource-documentation %}
-          <a href="{{tool.resource-documentation}}"
-            >{{tool.resource-documentation}}</a
-          >
+          <a href="{{tool.resource-documentation}}">
+            {{tool.resource-documentation}}
+          </a>
           {%- endif %}
         </td>
         <td>
           {%- if tool.galaxy.size > 1 %}
-          <p class="d-inline-flex gap-1">
-            <a
-              data-bs-toggle="collapse"
-              href="#{{ rowId }}"
-              aria-expanded="false"
-              aria-controls="{{ rowId }}"
-            >
-              {{tool.galaxy.size}} tools &thinsp;<i
-                class="fa-solid fa-square-plus"
-              ></i>
-            </a>
-          </p>
-          <div class="collapse" id="{{ rowId }}">
-            {%- for galaxy-tool in tool.galaxy %}
-            <div class="mt-2">
-              <a href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a>
-            </div>
-            {%- endfor %}
-          </div>
+          <a
+            class="text-primary cursor-pointer"
+            tabindex="0"
+            data-bs-toggle="popover"
+            data-bs-placement="bottom"
+            data-bs-trigger="focus"
+            data-bs-html="true"
+            data-bs-content="
+              <ul class='ps-3 mb-0'>
+                {%- for galaxy-tool in tool.galaxy %}
+                <li>
+                  <a href='{{galaxy-tool.url}}' target='_blank' class='fs-6 lh-lg'>{{galaxy-tool.title}}</a>
+                </li>
+                {%- endfor %}
+              </ul>
+            "
+          >
+            {{tool.galaxy.size}} tools
+            <i class="fa-solid fa-circle-plus ms-1"></i>
+          </a>
           {%- else %}
           <a href="{{tool.galaxy[0].url}}">{{tool.galaxy[0].title}}</a>
           {%- endif %}
@@ -198,7 +240,9 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         </td>
         <td>
           {% if tool.bunya %}
-          <span class="badge text-bg-light mb-2">{{tool.bunya}}</span>
+          <span class="badge text-bg-light mb-2 text-wrap word-break">
+            {{tool.bunya}}
+          </span>
           {%- endif %}
         </td>
       </tr>
@@ -226,7 +270,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/datatables.min.js"></script>
 <script>
   $(document).ready(function () {
-    var table = $("#DataTables_Table_0").DataTable();
+    const table = $("#DataTables_Table_0").DataTable();
     table.columns([1, 3, 7, 8]).visible(false);
     new $.fn.dataTable.Buttons(table, {
       buttons: [
@@ -247,6 +291,16 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 
     table.buttons().container().prependTo("#DataTables_Table_0_length");
 
+    // Event listener for Topic Badges
+    table.on("draw", function () {
+      var badges = document.querySelectorAll(".topic-badge");
+      badges.forEach(function (badge) {
+        badge.addEventListener("click", function () {
+          handleBadgeClick(this);
+        });
+      });
+    });
+
     let searchTerm = "";
     searchFilter(table, searchTerm);
 
@@ -256,14 +310,6 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       .addEventListener("click", function () {
         clearAllFilters();
       });
-
-    // Event listener for Topic Badges
-    var badges = document.querySelectorAll(".topic-badge");
-    badges.forEach(function (badge) {
-      badge.addEventListener("click", function () {
-        handleBadgeClick(this);
-      });
-    });
 
     function handleBadgeClick(badge) {
       var topic = badge.textContent.trim();
@@ -303,14 +349,6 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           boundary: true,
         })
         .draw();
-
-      // Add click event to new badges displayed
-      var badges = document.querySelectorAll(".topic-badge");
-      badges.forEach(function (badge) {
-        badge.addEventListener("click", function () {
-          handleBadgeClick(this);
-        });
-      });
     }
 
     // Function to check if a filter badge with the same text already exists
@@ -354,5 +392,15 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       document.querySelector(".filter-message").style.display = "inline-block";
       document.querySelector(".clear-all-button").style.display = "none";
     }
+
+    const popoverTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="popover"]'
+    );
+    const popoverList = [...popoverTriggerList].map(
+      (popoverTriggerEl) =>
+        new bootstrap.Popover(popoverTriggerEl, {
+          trigger: "focus",
+        })
+    );
   });
 </script>
