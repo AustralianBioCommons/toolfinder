@@ -30,9 +30,9 @@
   }
   .popover {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     max-height: 50vh;
-    max-width: 840px;
+    max-width: 50vw;
   }
   .popover-body {
     overflow: scroll;
@@ -41,8 +41,12 @@
     text-decoration: underline;
   }
   .col-publications,
-  .col-galaxy {
+  .col-galaxy,
+  .col-description {
     min-width: 180px;
+  }
+  .col-galaxy-description {
+    min-width: 240px;
   }
   .col-badge {
     width: 180px !important;
@@ -95,7 +99,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
             <i class="fa-solid fa-info-circle"></i> </a
           >{%- endif %}
         </th>
-        <th>Description</th>
+        <th class="col-description">Description</th>
         <th>Registry link</th>
         <th>Tool identifier (e.g. module name)</th>
         <th>Topic(s)</th>
@@ -207,13 +211,26 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
             data-bs-trigger="focus"
             data-bs-html="true"
             data-bs-content="
-              <ul class='ps-3 mb-0'>
-                {%- for galaxy-tool in tool.galaxy %}
-                <li>
-                  <a href='{{galaxy-tool.url}}' target='_blank' class='fs-6 lh-lg'>{{galaxy-tool.title}}</a>
-                </li>
-                {%- endfor %}
-              </ul>
+              <div class='p-3'>
+                <table class='table table-bordered mb-0 align-middle'>
+                  <thead class='table-dark'>
+                    <tr>
+                      <th>Tool Name</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {%- for galaxy-tool in tool.galaxy %}
+                    <tr>
+                      <td>
+                        <a href='{{galaxy-tool.url}}' target='_blank' class='fs-6 lh-lg'>{{galaxy-tool.title}}</a>
+                      </td>
+                      <td class='col-galaxy-description'></td>
+                    </tr>
+                    {%- endfor %}
+                  </tbody>
+                </table>
+              </div>
             "
           >
             {{tool.galaxy.size}} tools
@@ -392,6 +409,15 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       document.querySelector(".filter-message").style.display = "inline-block";
       document.querySelector(".clear-all-button").style.display = "none";
     }
+
+    // Allow table elements in popovers
+    const myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
+    myDefaultAllowList.table = [];
+    myDefaultAllowList.thead = [];
+    myDefaultAllowList.tbody = [];
+    myDefaultAllowList.th = [];
+    myDefaultAllowList.tr = [];
+    myDefaultAllowList.td = [];
 
     const popoverTriggerList = document.querySelectorAll(
       '[data-bs-toggle="popover"]'
