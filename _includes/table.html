@@ -225,7 +225,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
                       <td>
                         <a href='{{galaxy-tool.url}}' target='_blank' class='fs-6 lh-lg'>{{galaxy-tool.title}}</a>
                       </td>
-                      <td class='col-galaxy-description'></td>
+                      <td class='col-galaxy-description'>{{galaxy-tool.description}}</td>
                     </tr>
                     {%- endfor %}
                   </tbody>
@@ -318,7 +318,21 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       });
     });
 
+    const urlParams = new URLSearchParams(window.location.search);
+    let paramTopics = urlParams.get("topic");
     let searchTerm = "";
+
+    if (paramTopics) {
+      paramTopics = paramTopics.includes("dna")
+        ? paramTopics.replace("dna", "DNA")
+        : paramTopics;
+      const paramTopicsArray = paramStringtoArray(paramTopics);
+      paramTopicsArray.forEach((paramTopic) => {
+        createFilterBadge(paramTopic);
+        searchTerm = `${searchTerm.trim()} ${paramTopic}`.trim();
+      });
+    }
+
     searchFilter(table, searchTerm);
 
     // Event listener for Clear All Filters button
@@ -328,34 +342,50 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         clearAllFilters();
       });
 
+    function paramStringtoArray(inputString) {
+      // Split the input string into an array of strings
+      let words = inputString.split(" ");
+      // Capitalize the first letter of each word and replace "_" with a space
+      let formattedArray = words.map((word) => {
+        // Capitalize the first letter of the word
+        let capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
+        // Replace "_" with a space
+        return capitalizedWord.replace(/_/g, " ");
+      });
+      return formattedArray;
+    }
+
+    function createFilterBadge(topic) {
+      var filterBadge = document.createElement("span");
+      filterBadge.className =
+        "btn btn-light px-2 border border-dark text-dark btn-sm rounded-pill fw-bold mx-2 text-wrap filter-badge";
+      filterBadge.textContent = topic;
+
+      // Add '×' symbol for removing the filter chip
+      var removeButton = document.createElement("span");
+      removeButton.innerHTML = " &#x2715;";
+      filterBadge.appendChild(removeButton);
+
+      // Add click event to remove the filter badge
+      filterBadge.addEventListener("click", function () {
+        handleBadgeRemoval(this);
+      });
+
+      document.getElementById("filterContainer").appendChild(filterBadge);
+
+      document.querySelector(".filter-message").style.display = "none";
+      document.querySelector(".clear-all-button").style.display =
+        "inline-block";
+    }
+
     function handleBadgeClick(badge) {
       var topic = badge.textContent.trim();
 
       // Check if a filter badge with the same text already exists
       if (!filterBadgeExists(topic)) {
-        var filterBadge = document.createElement("span");
-        filterBadge.className =
-          "btn btn-light px-2 border border-dark text-dark btn-sm rounded-pill fw-bold mx-2 text-wrap filter-badge";
-        filterBadge.textContent = topic;
-
-        // Add '×' symbol for removing the filter chip
-        var removeButton = document.createElement("span");
-        removeButton.innerHTML = " &#x2715;";
-        filterBadge.appendChild(removeButton);
-
+        createFilterBadge(topic);
         searchTerm = `${searchTerm.trim()} ${topic}`.trim();
         searchFilter(table, searchTerm);
-
-        // Add click event to remove the filter badge
-        filterBadge.addEventListener("click", function () {
-          handleBadgeRemoval(this);
-        });
-
-        document.getElementById("filterContainer").appendChild(filterBadge);
-
-        document.querySelector(".filter-message").style.display = "none";
-        document.querySelector(".clear-all-button").style.display =
-          "inline-block";
       }
     }
 
