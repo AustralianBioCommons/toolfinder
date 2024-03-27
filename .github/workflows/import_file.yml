@@ -20,7 +20,7 @@ jobs:
 
       - name: Update
         run: |
-          ls temporary_folder
+          ls temporary_folder/data
           cp -u temporary_folder/data/data.yaml data/data.yaml
           cd ..
 
