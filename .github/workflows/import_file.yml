@@ -22,7 +22,6 @@ jobs:
         run: |
           ls temporary_folder/data
           cp -u temporary_folder/data/data.yaml _data/data.yaml
-          rm temporary_folder
           cd ..
           
       - name: Remove
