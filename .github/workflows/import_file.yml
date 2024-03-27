@@ -24,6 +24,10 @@ jobs:
           cp -u temporary_folder/data/data.yaml _data/data.yaml
           rm temporary_folder
           cd ..
+          
+      - name: Remove
+        run: |
+          rm temporary_folder
 
       - name: Check for changes
         run: |
