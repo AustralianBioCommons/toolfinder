@@ -26,7 +26,7 @@ jobs:
           
       - name: Remove
         run: |
-          rmdir /s temporary_folder
+          rmdir temporary_folder /s
 
       - name: Check for changes
         run: |
