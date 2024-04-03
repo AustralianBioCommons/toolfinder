@@ -25,7 +25,7 @@ Uwe Winter:
     affiliation: Australian BioCommons, University of Melbourne, Melbourne, Victoria
 
 Minh Vu:
-    git:
+    git: minh-biocommons
     orcid:
     role: author
     affiliation: Australian BioCommons, University of Sydney, Sydney, New South Wales
@@ -35,12 +35,12 @@ Bert Droesbeke:
     orcid: 0000-0003-0522-5674
 
 Sarah Beecroft:
-    git:
+    git: SarahBeecroft
     orcid: 0000-0002-3935-2279
     affiliation: Pawsey Supercomputing Research Centre, Perth, Western Australia
 
 Marco De La Pierre:
-    git:
+    git: marcodelapierre
     orcid: 0000-0002-7429-1846
     affiliation: Pawsey Supercomputing Research Centre, Perth, Western Australia
 
@@ -50,7 +50,7 @@ Dale Roberts:
     affiliation: National Computational Infrastructure, The Australian National University, Canberra, Australian Capital Territory
 
 Gareth Price:
-    git:
+    git: GarethPrice-Aus
     orcid: 0000-0003-2439-8650
     affiliation: Research Computing Centre, University of Queensland, Brisbane, Queensland
 
@@ -60,7 +60,7 @@ Alain-Dominique Gorse:
     affiliation: Queensland Cyber Infrastructure Foundation (QCIF), Brisbane, Queensland
 
 Nigel Ward:
-    git:
+    git: nigelward
     orcid: 0000-0003-3952-6344
     affiliation: Australian BioCommons, Queensland Cyber Infrastructure Foundation (QCIF) University of Queensland, Brisbane, Queensland
 
