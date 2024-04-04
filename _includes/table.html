@@ -52,6 +52,9 @@
     width: 180px !important;
     min-width: 120px;
   }
+  .btn-toggle {
+    width: 48px;
+  }
 </style>
 
 {%- if include.tag %} {%- assign tools = site.data.data | add_related_pages |
@@ -71,10 +74,38 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         <th colspan="14">
           <div class="d-flex align-items-center">
             <div class="py-2">Filter by Topic(s):</div>
-            <div class="filter-message fw-medium text-black-50 ms-3">
+            <div
+              class="btn-group btn-group-sm mx-3"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-outline-dark btn-toggle" for="btnradio1"
+                >and</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-dark btn-toggle" for="btnradio2"
+                >or</label
+              >
+            </div>
+            <div class="filter-message fw-medium text-black-50">
               Please click on a topic to filter results by topics
             </div>
-            <div class="clear-all-button text-danger fw-medium ms-3 me-2">
+            <div class="clear-all-button text-danger fw-medium me-2">
               Clear All Filters
             </div>
             <div id="filterContainer"></div>
@@ -320,8 +351,15 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 
     const urlParams = new URLSearchParams(window.location.search);
     let paramTopics = urlParams.get("topic");
+    let paramType = urlParams.get("type");
     let searchTerm = "";
+    let searchType = "and";
 
+    if (paramType) {
+      searchType = paramType;
+      document.getElementById('btnradio1').checked = (searchType === 'and');
+      document.getElementById('btnradio2').checked = (searchType === 'or');
+    }
     if (paramTopics) {
       paramTopics = paramTopics.includes("dna")
         ? paramTopics.replace("dna", "DNA")
@@ -329,7 +367,12 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       const paramTopicsArray = paramStringtoArray(paramTopics);
       paramTopicsArray.forEach((paramTopic) => {
         createFilterBadge(paramTopic);
-        searchTerm = `${searchTerm.trim()} ${paramTopic}`.trim();
+        searchTerm =
+          paramType === "or"
+            ? `${searchTerm}|${paramTopic}`
+                .replace(/^\|+|\|+$/g, "")
+                .replace(/\|+/g, "|")
+            : `${searchTerm.trim()} ${paramTopic}`.trim();
       });
     }
 
@@ -341,6 +384,20 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       .addEventListener("click", function () {
         clearAllFilters();
       });
+
+    document.querySelectorAll(".btn-toggle").forEach((button) => {
+      button.addEventListener("click", handleRadioButtonClick);
+    });
+
+    // Function to handle radio button click event
+    function handleRadioButtonClick(event) {
+      searchType = event.target.textContent.trim();
+      searchTerm =
+        searchType === "and"
+          ? searchTerm.replace(/\|/g, " ").trim()
+          : searchTerm.trim().replace(/ ([A-Z])/g, '|$1');
+      searchFilter(table, searchTerm);
+    }
 
     function paramStringtoArray(inputString) {
       // Split the input string into an array of strings
@@ -384,18 +441,22 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       // Check if a filter badge with the same text already exists
       if (!filterBadgeExists(topic)) {
         createFilterBadge(topic);
-        searchTerm = `${searchTerm.trim()} ${topic}`.trim();
+        searchTerm =
+          searchType === "and"
+            ? `${searchTerm.trim()} ${topic}`.trim()
+            : `${searchTerm}|${topic}`
+                .replace(/^\|+|\|+$/g, "")
+                .replace(/\|+/g, "|");
         searchFilter(table, searchTerm);
       }
     }
 
     function searchFilter(table, searchTerm) {
-      table
-        .columns(4)
-        .search(searchTerm, {
-          boundary: true,
-        })
-        .draw();
+      if (searchType === "and") {
+        table.columns(4).search(searchTerm, false, true).draw();
+      } else {
+        table.columns(4).search(searchTerm, true, false).draw();
+      }
     }
 
     // Function to check if a filter badge with the same text already exists
@@ -414,10 +475,13 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       badge.parentNode.removeChild(badge);
 
       const filterBadgeText = badge.textContent.replace(" \u2715", "");
-      searchTerm = searchTerm
-        .replace(filterBadgeText, "")
-        .replace(/\s+/g, " ")
-        .trim();
+      searchTerm =
+        searchType === "and"
+          ? searchTerm.replace(filterBadgeText, "").trim().replace(/\s+/g, " ")
+          : searchTerm
+              .replace(filterBadgeText, "")
+              .replace(/^\|+|\|+$/g, "")
+              .replace(/\|+/g, "|");
       searchFilter(table, searchTerm);
 
       if (document.querySelectorAll(".filter-badge").length === 0) {
