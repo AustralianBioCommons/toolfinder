@@ -28,18 +28,6 @@
   .cursor-pointer {
     cursor: pointer;
   }
-  .popover {
-    display: flex;
-    flex-direction: column;
-    max-height: 50vh;
-    max-width: 50vw;
-  }
-  .popover-body {
-    overflow: scroll;
-  }
-  .popover a:hover {
-    text-decoration: underline;
-  }
   .col-publications,
   .col-galaxy,
   .col-description {
@@ -54,6 +42,9 @@
   }
   .btn-toggle {
     width: 48px;
+  }
+  .modal-content {
+    max-height: 60vh !important;
   }
 </style>
 
@@ -193,24 +184,39 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- if tool.publications.size > 1 %}
           <a
             class="text-primary cursor-pointer"
-            tabindex="0"
-            data-bs-toggle="popover"
-            data-bs-placement="bottom"
-            data-bs-trigger="focus"
-            data-bs-html="true"
-            data-bs-content="
-              <ul class='ps-3 mb-0'>
-              {%- for publication in tool.publications %}
-                <li>
-                  <a href='{{publication.url}}' target='_blank' class='fs-6 lh-lg'>{{publication.title}}</a>
-                </li>
-              {%- endfor %}
-              </ul>
-              "
+            data-bs-toggle="modal"
+            data-bs-target="#{{rowId}}-publications-modal"
           >
             {{tool.publications.size}} publications
             <i class="fa-solid fa-circle-plus ms-1"></i>
           </a>
+          <div
+            class="modal fade"
+            id="{{rowId}}-publications-modal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+            >
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Publications</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <ul class='ps-4 mb-0'>
+                    {%- for publication in tool.publications %}
+                      <li>
+                        <a href='{{publication.url}}' target='_blank' class='fs-6 lh-lg'>{{publication.title}}</a>
+                      </li>
+                    {%- endfor %}
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>          
           {%- else %}
           <a href="{{tool.publications[0].url}}">
             {{tool.publications[0].title}}
@@ -236,37 +242,61 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- if tool.galaxy.size > 1 %}
           <a
             class="text-primary cursor-pointer"
-            tabindex="0"
-            data-bs-toggle="popover"
-            data-bs-placement="bottom"
-            data-bs-trigger="focus"
-            data-bs-html="true"
-            data-bs-content="
-              <div class='p-3'>
-                <table class='table table-bordered mb-0 align-middle'>
-                  <thead class='table-dark'>
-                    <tr>
-                      <th>Tool Name</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {%- for galaxy-tool in tool.galaxy %}
-                    <tr>
-                      <td>
-                        <a href='{{galaxy-tool.url}}' target='_blank' class='fs-6 lh-lg'>{{galaxy-tool.title}}</a>
-                      </td>
-                      <td class='col-galaxy-description'>{{galaxy-tool.description}}</td>
-                    </tr>
-                    {%- endfor %}
-                  </tbody>
-                </table>
-              </div>
-            "
+            data-bs-toggle="modal"
+            data-bs-target="#{{rowId}}-galaxy-modal"
           >
             {{tool.galaxy.size}} tools
             <i class="fa-solid fa-circle-plus ms-1"></i>
           </a>
+          <div
+            class="modal fade"
+            id="{{rowId}}-galaxy-modal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+            >
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="d-flex justify-content-end mb-3">
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <table class="table table-bordered mb-0 align-middle">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Tool Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {%- for galaxy-tool in tool.galaxy %}
+                      <tr>
+                        <td>
+                          <a
+                            href="{{galaxy-tool.url}}"
+                            target="_blank"
+                            class="fs-6 lh-lg"
+                            >{{galaxy-tool.title}}</a
+                          >
+                        </td>
+                        <td class="col-galaxy-description">
+                          {{galaxy-tool.description}}
+                        </td>
+                      </tr>
+                      {%- endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
           {%- else %}
           <a href="{{tool.galaxy[0].url}}">{{tool.galaxy[0].title}}</a>
           {%- endif %}
@@ -357,8 +387,8 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 
     if (paramType) {
       searchType = paramType;
-      document.getElementById('btnradio1').checked = (searchType === 'and');
-      document.getElementById('btnradio2').checked = (searchType === 'or');
+      document.getElementById("btnradio1").checked = searchType === "and";
+      document.getElementById("btnradio2").checked = searchType === "or";
     }
     if (paramTopics) {
       paramTopics = paramTopics.includes("dna")
@@ -395,7 +425,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       searchTerm =
         searchType === "and"
           ? searchTerm.replace(/\|/g, " ").trim()
-          : searchTerm.trim().replace(/ ([A-Z])/g, '|$1');
+          : searchTerm.trim().replace(/ ([A-Z])/g, "|$1");
       searchFilter(table, searchTerm);
     }
 
@@ -503,24 +533,5 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       document.querySelector(".filter-message").style.display = "inline-block";
       document.querySelector(".clear-all-button").style.display = "none";
     }
-
-    // Allow table elements in popovers
-    const myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
-    myDefaultAllowList.table = [];
-    myDefaultAllowList.thead = [];
-    myDefaultAllowList.tbody = [];
-    myDefaultAllowList.th = [];
-    myDefaultAllowList.tr = [];
-    myDefaultAllowList.td = [];
-
-    const popoverTriggerList = document.querySelectorAll(
-      '[data-bs-toggle="popover"]'
-    );
-    const popoverList = [...popoverTriggerList].map(
-      (popoverTriggerEl) =>
-        new bootstrap.Popover(popoverTriggerEl, {
-          trigger: "focus",
-        })
-    );
   });
 </script>
