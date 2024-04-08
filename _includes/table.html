@@ -28,18 +28,6 @@
   .cursor-pointer {
     cursor: pointer;
   }
-  .popover {
-    display: flex;
-    flex-direction: column;
-    max-height: 50vh;
-    max-width: 50vw;
-  }
-  .popover-body {
-    overflow: scroll;
-  }
-  .popover a:hover {
-    text-decoration: underline;
-  }
   .col-publications,
   .col-galaxy,
   .col-description {
@@ -51,6 +39,12 @@
   .col-badge {
     width: 180px !important;
     min-width: 120px;
+  }
+  .btn-toggle {
+    width: 48px;
+  }
+  .modal-content {
+    max-height: 60vh !important;
   }
 </style>
 
@@ -71,10 +65,38 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         <th colspan="14">
           <div class="d-flex align-items-center">
             <div class="py-2">Filter by Topic(s):</div>
-            <div class="filter-message fw-medium text-black-50 ms-3">
+            <div
+              class="btn-group btn-group-sm mx-3"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-outline-dark btn-toggle" for="btnradio1"
+                >and</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-dark btn-toggle" for="btnradio2"
+                >or</label
+              >
+            </div>
+            <div class="filter-message fw-medium text-black-50">
               Please click on a topic to filter results by topics
             </div>
-            <div class="clear-all-button text-danger fw-medium ms-3 me-2">
+            <div class="clear-all-button text-danger fw-medium me-2">
               Clear All Filters
             </div>
             <div id="filterContainer"></div>
@@ -162,24 +184,39 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- if tool.publications.size > 1 %}
           <a
             class="text-primary cursor-pointer"
-            tabindex="0"
-            data-bs-toggle="popover"
-            data-bs-placement="bottom"
-            data-bs-trigger="focus"
-            data-bs-html="true"
-            data-bs-content="
-              <ul class='ps-3 mb-0'>
-              {%- for publication in tool.publications %}
-                <li>
-                  <a href='{{publication.url}}' target='_blank' class='fs-6 lh-lg'>{{publication.title}}</a>
-                </li>
-              {%- endfor %}
-              </ul>
-              "
+            data-bs-toggle="modal"
+            data-bs-target="#{{rowId}}-publications-modal"
           >
             {{tool.publications.size}} publications
             <i class="fa-solid fa-circle-plus ms-1"></i>
           </a>
+          <div
+            class="modal fade"
+            id="{{rowId}}-publications-modal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+            >
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Publications</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <ul class='ps-4 mb-0'>
+                    {%- for publication in tool.publications %}
+                      <li>
+                        <a href='{{publication.url}}' target='_blank' class='fs-6 lh-lg'>{{publication.title}}</a>
+                      </li>
+                    {%- endfor %}
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>          
           {%- else %}
           <a href="{{tool.publications[0].url}}">
             {{tool.publications[0].title}}
@@ -205,37 +242,61 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- if tool.galaxy.size > 1 %}
           <a
             class="text-primary cursor-pointer"
-            tabindex="0"
-            data-bs-toggle="popover"
-            data-bs-placement="bottom"
-            data-bs-trigger="focus"
-            data-bs-html="true"
-            data-bs-content="
-              <div class='p-3'>
-                <table class='table table-bordered mb-0 align-middle'>
-                  <thead class='table-dark'>
-                    <tr>
-                      <th>Tool Name</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {%- for galaxy-tool in tool.galaxy %}
-                    <tr>
-                      <td>
-                        <a href='{{galaxy-tool.url}}' target='_blank' class='fs-6 lh-lg'>{{galaxy-tool.title}}</a>
-                      </td>
-                      <td class='col-galaxy-description'>{{galaxy-tool.description}}</td>
-                    </tr>
-                    {%- endfor %}
-                  </tbody>
-                </table>
-              </div>
-            "
+            data-bs-toggle="modal"
+            data-bs-target="#{{rowId}}-galaxy-modal"
           >
             {{tool.galaxy.size}} tools
             <i class="fa-solid fa-circle-plus ms-1"></i>
           </a>
+          <div
+            class="modal fade"
+            id="{{rowId}}-galaxy-modal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+            >
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="d-flex justify-content-end mb-3">
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <table class="table table-bordered mb-0 align-middle">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Tool Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {%- for galaxy-tool in tool.galaxy %}
+                      <tr>
+                        <td>
+                          <a
+                            href="{{galaxy-tool.url}}"
+                            target="_blank"
+                            class="fs-6 lh-lg"
+                            >{{galaxy-tool.title}}</a
+                          >
+                        </td>
+                        <td class="col-galaxy-description">
+                          {{galaxy-tool.description}}
+                        </td>
+                      </tr>
+                      {%- endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
           {%- else %}
           <a href="{{tool.galaxy[0].url}}">{{tool.galaxy[0].title}}</a>
           {%- endif %}
@@ -320,8 +381,15 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 
     const urlParams = new URLSearchParams(window.location.search);
     let paramTopics = urlParams.get("topic");
+    let paramType = urlParams.get("type");
     let searchTerm = "";
+    let searchType = "and";
 
+    if (paramType) {
+      searchType = paramType;
+      document.getElementById("btnradio1").checked = searchType === "and";
+      document.getElementById("btnradio2").checked = searchType === "or";
+    }
     if (paramTopics) {
       paramTopics = paramTopics.includes("dna")
         ? paramTopics.replace("dna", "DNA")
@@ -329,7 +397,12 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       const paramTopicsArray = paramStringtoArray(paramTopics);
       paramTopicsArray.forEach((paramTopic) => {
         createFilterBadge(paramTopic);
-        searchTerm = `${searchTerm.trim()} ${paramTopic}`.trim();
+        searchTerm =
+          paramType === "or"
+            ? `${searchTerm}|${paramTopic}`
+                .replace(/^\|+|\|+$/g, "")
+                .replace(/\|+/g, "|")
+            : `${searchTerm.trim()} ${paramTopic}`.trim();
       });
     }
 
@@ -341,6 +414,20 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       .addEventListener("click", function () {
         clearAllFilters();
       });
+
+    document.querySelectorAll(".btn-toggle").forEach((button) => {
+      button.addEventListener("click", handleRadioButtonClick);
+    });
+
+    // Function to handle radio button click event
+    function handleRadioButtonClick(event) {
+      searchType = event.target.textContent.trim();
+      searchTerm =
+        searchType === "and"
+          ? searchTerm.replace(/\|/g, " ").trim()
+          : searchTerm.trim().replace(/ ([A-Z])/g, "|$1");
+      searchFilter(table, searchTerm);
+    }
 
     function paramStringtoArray(inputString) {
       // Split the input string into an array of strings
@@ -384,18 +471,22 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       // Check if a filter badge with the same text already exists
       if (!filterBadgeExists(topic)) {
         createFilterBadge(topic);
-        searchTerm = `${searchTerm.trim()} ${topic}`.trim();
+        searchTerm =
+          searchType === "and"
+            ? `${searchTerm.trim()} ${topic}`.trim()
+            : `${searchTerm}|${topic}`
+                .replace(/^\|+|\|+$/g, "")
+                .replace(/\|+/g, "|");
         searchFilter(table, searchTerm);
       }
     }
 
     function searchFilter(table, searchTerm) {
-      table
-        .columns(4)
-        .search(searchTerm, {
-          boundary: true,
-        })
-        .draw();
+      if (searchType === "and") {
+        table.columns(4).search(searchTerm, false, true).draw();
+      } else {
+        table.columns(4).search(searchTerm, true, false).draw();
+      }
     }
 
     // Function to check if a filter badge with the same text already exists
@@ -414,10 +505,13 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       badge.parentNode.removeChild(badge);
 
       const filterBadgeText = badge.textContent.replace(" \u2715", "");
-      searchTerm = searchTerm
-        .replace(filterBadgeText, "")
-        .replace(/\s+/g, " ")
-        .trim();
+      searchTerm =
+        searchType === "and"
+          ? searchTerm.replace(filterBadgeText, "").trim().replace(/\s+/g, " ")
+          : searchTerm
+              .replace(filterBadgeText, "")
+              .replace(/^\|+|\|+$/g, "")
+              .replace(/\|+/g, "|");
       searchFilter(table, searchTerm);
 
       if (document.querySelectorAll(".filter-badge").length === 0) {
@@ -439,24 +533,5 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       document.querySelector(".filter-message").style.display = "inline-block";
       document.querySelector(".clear-all-button").style.display = "none";
     }
-
-    // Allow table elements in popovers
-    const myDefaultAllowList = bootstrap.Tooltip.Default.allowList;
-    myDefaultAllowList.table = [];
-    myDefaultAllowList.thead = [];
-    myDefaultAllowList.tbody = [];
-    myDefaultAllowList.th = [];
-    myDefaultAllowList.tr = [];
-    myDefaultAllowList.td = [];
-
-    const popoverTriggerList = document.querySelectorAll(
-      '[data-bs-toggle="popover"]'
-    );
-    const popoverList = [...popoverTriggerList].map(
-      (popoverTriggerEl) =>
-        new bootstrap.Popover(popoverTriggerEl, {
-          trigger: "focus",
-        })
-    );
   });
 </script>
