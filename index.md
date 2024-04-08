@@ -85,8 +85,6 @@ This page lists bioinformatics tools and software that are installed across seve
 </div>
 
 
-Table last updated **2024-01-12**.
-
 - The **Tool identifier** column (hidden by default) contains an identifier for the tool / workflow: typically the module name (used for matching to HPC lists).
 - The **Topic(s)** column categorises the tools by purpose, using an [EDAM](https://github.com/edamontology/edamontology) concept where possible. 
 - More information about a tool can be found by following the [bio.tools links](https://bio.tools/). 
