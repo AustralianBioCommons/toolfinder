@@ -8,7 +8,7 @@ datatable: true
 This page lists bioinformatics tools and software that are installed across several of the [**BioCommons infrastructure partner systems**](https://support.biocommons.org.au/support/solutions/articles/6000251977-compute-systems-at-the-biocommons-partner-infrastructures). Tool / software status on other infrastructure partner systems will be added over time.
 
 
-{% include callout.html type="important" content="`NCI (if89)` in the table refers to the [Australian BioCommons Tools and Workflows repository](https://australianbiocommons.github.io/ables/if89/), located in project allocation `if89` at the National Computational Infrastructure (NCI)." %}
+{% include callout.html type="note" content="`NCI (if89)` in the table refers to the [Australian BioCommons Tools and Workflows repository](https://australianbiocommons.github.io/ables/if89/), located in project allocation `if89` at the National Computational Infrastructure (NCI)." %}
 
 
 <div class="d-flex flex-column">
