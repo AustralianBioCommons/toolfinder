@@ -58,7 +58,13 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 <h2>Relevant tools and resources</h2>
 {%- endif %}
 
-<div class="my-5 table-responsive">
+<div class="spinner-container my-5 py-5 mx-auto text-center items-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div id="tool-table" class="my-5 table-responsive d-none">
   <table class="tooltable table display table-bordered table-striped w-100">
     <thead>
       <tr>
@@ -203,20 +209,30 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Publications</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
                 <div class="modal-body">
-                  <ul class='ps-4 mb-0'>
+                  <ul class="ps-4 mb-0">
                     {%- for publication in tool.publications %}
-                      <li>
-                        <a href='{{publication.url}}' target='_blank' class='fs-6 lh-lg'>{{publication.title}}</a>
-                      </li>
+                    <li>
+                      <a
+                        href="{{publication.url}}"
+                        target="_blank"
+                        class="fs-6 lh-lg"
+                        >{{publication.title}}</a
+                      >
+                    </li>
                     {%- endfor %}
-                    </ul>
+                  </ul>
                 </div>
               </div>
             </div>
-          </div>          
+          </div>
           {%- else %}
           <a href="{{tool.publications[0].url}}">
             {{tool.publications[0].title}}
@@ -349,6 +365,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 <script>
   $(document).ready(function () {
     const table = $("#DataTables_Table_0").DataTable();
+    table.page.len(50);
     table.columns([1, 3, 7, 8]).visible(false);
     new $.fn.dataTable.Buttons(table, {
       buttons: [
@@ -366,12 +383,13 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         },
       ],
     });
-
     table.buttons().container().prependTo("#DataTables_Table_0_length");
+    document.querySelector(".spinner-container").style.display = "none";
+    document.getElementById("tool-table").classList.remove("d-none");
 
     // Event listener for Topic Badges
     table.on("draw", function () {
-      var badges = document.querySelectorAll(".topic-badge");
+      let badges = document.querySelectorAll(".topic-badge");
       badges.forEach(function (badge) {
         badge.addEventListener("click", function () {
           handleBadgeClick(this);
@@ -443,13 +461,13 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
     }
 
     function createFilterBadge(topic) {
-      var filterBadge = document.createElement("span");
+      let filterBadge = document.createElement("span");
       filterBadge.className =
         "btn btn-light px-2 border border-dark text-dark btn-sm rounded-pill fw-bold mx-2 text-wrap filter-badge";
       filterBadge.textContent = topic;
 
       // Add '×' symbol for removing the filter chip
-      var removeButton = document.createElement("span");
+      let removeButton = document.createElement("span");
       removeButton.innerHTML = " &#x2715;";
       filterBadge.appendChild(removeButton);
 
@@ -466,7 +484,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
     }
 
     function handleBadgeClick(badge) {
-      var topic = badge.textContent.trim();
+      let topic = badge.textContent.trim();
 
       // Check if a filter badge with the same text already exists
       if (!filterBadgeExists(topic)) {
@@ -491,8 +509,8 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
 
     // Function to check if a filter badge with the same text already exists
     function filterBadgeExists(topic) {
-      var filterBadges = document.querySelectorAll(".filter-badge");
-      for (var i = 0; i < filterBadges.length; i++) {
+      let filterBadges = document.querySelectorAll(".filter-badge");
+      for (let i = 0; i < filterBadges.length; i++) {
         if (filterBadges[i].textContent.includes(topic)) {
           return true;
         }
@@ -522,7 +540,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
     }
 
     function clearAllFilters() {
-      var filterBadges = document.querySelectorAll(".filter-badge");
+      let filterBadges = document.querySelectorAll(".filter-badge");
       filterBadges.forEach(function (badge) {
         badge.parentNode.removeChild(badge);
       });
