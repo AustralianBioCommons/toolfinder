@@ -323,17 +323,17 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- endfor %} {%- endif %}
         </td>
         <td>
-          {% if tool.nci-if89 %}
+          {% if tool.nci-if89 != blank %}
           <span class="badge text-bg-light mb-2">{{tool.nci-if89}}</span>
           {%- endif %}
         </td>
         <td>
-          {% if tool.pawsey %}
+          {% if tool.pawsey != blank %}
           <span class="badge text-bg-light mb-2">{{tool.pawsey}}</span>
           {%- endif %}
         </td>
         <td>
-          {% if tool.bunya %}
+          {% if tool.bunya != blank %}
           <span class="badge text-bg-light mb-2 text-wrap word-break">
             {{tool.bunya}}
           </span>
