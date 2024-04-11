@@ -66,7 +66,7 @@ This work is supported by the [Australian BioCommons](https://www.biocommons.org
 
 ### References
 
-#### Tool metadata was sourced from {% tool "biotools" %} where possible
+#### Tool metadata was sourced from biotools where possible
 
 - Ison, J. *et al.* (2015). Tools and data services registry: a community effort to document bioinformatics resources. Nucleic Acids Research. [https://doi.org/10.1093/nar/gkv1116](https://doi.org/10.1093/nar/gkv1116)
 - [bio.tools API](https://biotools.readthedocs.io/en/latest/api_reference.html)
