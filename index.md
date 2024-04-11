@@ -20,6 +20,7 @@ This page lists bioinformatics tools and software that are installed across seve
     >
       Can’t find the software you need? Click here to see other options for
       finding software.
+      <i class="fa-solid fa-circle-chevron-down ms-1"></i>
     </button>
     <div class="collapse" id="collapse1">
       <div class="card card-body">
@@ -52,6 +53,7 @@ This page lists bioinformatics tools and software that are installed across seve
     >
       Click to find out how to request installation of software on ToolFinder
       listed infrastructures.
+      <i class="fa-solid fa-circle-chevron-down ms-1"></i>
     </button>
     <div class="collapse" id="collapse2">
       <div class="card card-body">

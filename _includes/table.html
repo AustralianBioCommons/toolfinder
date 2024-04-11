@@ -70,7 +70,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
       <tr>
         <th colspan="14">
           <div class="d-flex align-items-center">
-            <div class="py-2">Filter by Topic(s):</div>
+            <div class="py-2">Filter results by topic(s):</div>
             <div
               class="btn-group btn-group-sm mx-3"
               role="group"
@@ -84,7 +84,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
                 autocomplete="off"
                 checked
               />
-              <label class="btn btn-outline-dark btn-toggle" for="btnradio1"
+              <label class="btn btn-outline-primary btn-toggle" for="btnradio1"
                 >and</label
               >
 
@@ -95,12 +95,12 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
                 id="btnradio2"
                 autocomplete="off"
               />
-              <label class="btn btn-outline-dark btn-toggle" for="btnradio2"
+              <label class="btn btn-outline-primary btn-toggle" for="btnradio2"
                 >or</label
               >
             </div>
             <div class="filter-message fw-medium text-black-50">
-              Please click on a topic to filter results by topics
+              Select one or more topics from the Topic(s) column
             </div>
             <div class="clear-all-button text-danger fw-medium me-2">
               Clear All Filters
@@ -180,7 +180,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         <td class="dt-center">
           {% if tool.topics %} {%- for topic in tool.topics %}
           <button
-            class="btn btn-light badge topic-badge text-bg-light mb-2 text-wrap text-center"
+            class="btn btn-light badge border border-dark text-dark mb-2 text-wrap text-center topic-badge"
           >
             {{topic}}
           </button>
@@ -370,16 +370,13 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
     new $.fn.dataTable.Buttons(table, {
       buttons: [
         {
-          extend: "copy",
-          className: "btn btn-light",
-        },
-        {
-          extend: "csv",
-          className: "btn btn-light",
-        },
-        {
           extend: "colvis",
           className: "btn btn-light",
+        },
+        {
+          extend: "colvisRestore",
+          className: "btn btn-light",
+          text: "Reset column visibility"
         },
       ],
     });
