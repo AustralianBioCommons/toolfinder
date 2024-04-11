@@ -5,7 +5,7 @@ datatable: true
 ---
 
 
-This page lists bioinformatics tools and software that are installed across several of the [**BioCommons infrastructure partner systems**](https://support.biocommons.org.au/support/solutions/articles/6000251977-compute-systems-at-the-biocommons-partner-infrastructures). Tool / software status on other infrastructure partner systems will be added over time. Note: `NCI (if89)` in the table refers to the [Australian BioCommons Tools and Workflows repository](https://australianbiocommons.github.io/ables/if89/), located in project allocation `if89` at the National Computational Infrastructure (NCI).
+This page lists bioinformatics tools and software that are installed across several of the [**BioCommons infrastructure partner systems**](https://support.biocommons.org.au/support/solutions/articles/6000251977-compute-systems-at-the-biocommons-partner-infrastructures). Tool / software status on other infrastructure partner systems will be added over time. Note: `NCI (if89)` in the table refers to the [Australian BioCommons Tools and Workflows repository](https://australianbiocommons.github.io/ables/if89/), located in project allocation `if89` at the [National Computational Infrastructure (NCI)](https://nci.org.au/).
 
 
 <div class="d-flex flex-column">
@@ -83,10 +83,10 @@ This page lists bioinformatics tools and software that are installed across seve
 
 
 - The **Tool identifier** column (hidden by default) contains an identifier for the tool / workflow: typically the module name (used for matching to HPC lists).
-- The **Topic(s)** column categorises the tools by purpose, using an [EDAM](https://github.com/edamontology/edamontology) concept where possible. 
+- The **Topic(s)** column categorises the tools by purpose, using an {% tool "edam" %} concept where possible. 
 - More information about a tool can be found by following the {% tool "biotools" %} links. 
 - When a tool has been containerised to allow for easier installation on any compute infrastructure, a link to the containerised software that can be downloaded from {% tool "biocontainers" %} is shown in the **Containers available? (BioContainers)** column. 
-- The primary source material for the table is currently manually curated, and while we endeavour to keep the information as current as possible, there is a natural limit to the volume of information maintained here. Production of this information will be automated over time, and tools that are not relevant for bioinformatics analyses removed.
+- The primary source material for the table is manually curated, and while we endeavour to keep the information as current as possible, there is a natural limit to the volume of information maintained here. Production of this information will be automated over time, and tools that are not relevant for bioinformatics analyses removed.
 
 
 

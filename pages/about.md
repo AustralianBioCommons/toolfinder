@@ -43,7 +43,7 @@ Please see these video tutorials available through the Australian BioCommons You
 - [Australian BioCommons technical documentation quick tour](https://www.youtube.com/watch?v=UPIaNleejRk&t)
 
 
-## [License](LICENSE)
+## [License](LICENSE.md)
 
 
 ## Contributors
@@ -66,12 +66,12 @@ This work is supported by the [Australian BioCommons](https://www.biocommons.org
 
 ### References
 
-#### Tool metadata was sourced from [bio.tools](https://bio.tools/) where possible
+#### Tool metadata was sourced from {% tool "biotools" %} where possible
 
-- Ison, J. et al. (2015). Tools and data services registry: a community effort to document bioinformatics resources. Nucleic Acids Research. [DOI](https://doi.org/10.1093/nar/gkv1116)
+- Ison, J. *et al.* (2015). Tools and data services registry: a community effort to document bioinformatics resources. Nucleic Acids Research. [https://doi.org/10.1093/nar/gkv1116](https://doi.org/10.1093/nar/gkv1116)
 - [bio.tools API](https://biotools.readthedocs.io/en/latest/api_reference.html)
 
 #### EDAM was used for tool list categorisation
 
-- Ison, J., Kalaš, M., Jonassen, I., Bolser, D., Uludag, M., McWilliam, H., Malone, J., Lopez, R., Pettifer, S. and Rice, P. 2013. EDAM: an ontology of bioinformatics operations, types of data and identifiers, topics and formats. Bioinformatics, 29(10): 1325-1332. [DOI](https://doi.org/10.1093/bioinformatics/btt113) PMID: 23479348 *Open Access*
+- Ison, J., Kalaš, M., Jonassen, I., Bolser, D., Uludag, M., McWilliam, H., Malone, J., Lopez, R., Pettifer, S. and Rice, P. 2013. EDAM: an ontology of bioinformatics operations, types of data and identifiers, topics and formats. Bioinformatics, 29(10): 1325-1332. [https://doi.org/10.1093/bioinformatics/btt113](https://doi.org/10.1093/bioinformatics/btt113) PMID: 23479348 *Open Access*
 - [EDAM ontology GitHub](https://github.com/edamontology/edamontology)

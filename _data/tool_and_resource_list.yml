@@ -6,6 +6,13 @@
   description: Discover software tools.
   url: https://bio.tools/
   name: bio.tools
+- id: edam
+  description: Scientific ontology for data analysis and management, typically used for the life sciences. Covers Topics, Operations, Data types, and Formats.
+  url: https://edamontology.org/page
+  name: EDAM
+  registry:
+    biotools: edam-browser
+    europmc: 23479348
 - id: biocontainers
   description: Discover and access containers for software tools.
   url: https://biocontainers.pro/registry
