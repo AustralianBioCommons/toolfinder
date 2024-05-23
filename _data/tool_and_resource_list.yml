@@ -46,3 +46,20 @@
   description: Request a tool for QRIS-Cloud / UQ-RCC by completing a tool install request at the link below.
   url: https://support.qcif.edu.au/Request-for-installation-of-QRIScloud-HPC
   name: QRIS-Cloud / UQ-RCC
+
+- id: bunya
+  description: Supercomputer located at the University of Queensland.
+  url: https://dx.doi.org/10.48610/wf6c-qy55
+  name: Bunya
+- id: gadi
+  description: Supercomputer located at the National Computational Infrastructure (NCI).
+  url: https://nci.org.au/our-systems/hpc-systems
+  name: Gadi
+- id: setonix
+  description: Supercomputer located at Pawsey Supercomputing Centre (Pawsey).
+  url: https://pawsey.org.au/systems/setonix/
+  name: Setonix
+- id: galaxy-australia
+  description: Galaxy Australia is an open, web-based platform for accessible, reproducible and transparent computational research.
+  url: https://usegalaxy.org.au/
+  name: Galaxy Australia
