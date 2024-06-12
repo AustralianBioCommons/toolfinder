@@ -167,9 +167,9 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         </td>
         <td>{% if tool.description %} {{tool.description}} {%- endif %}</td>
         <td class="dt-center">
-          {% if tool.registry-link != blank %}
+          {% if tool.biotools != blank %}
           <a
-            href="https://bio.tools/{{tool.registry-link}}"
+            href="https://bio.tools/{{tool.biotools}}"
             class="badge text-center px-4 biotools-button"
           >
             <img src="https://bio.tools/img/elixir_biotools_transparent.png" />
@@ -178,7 +178,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         </td>
         <td>{% if tool.id %} {{tool.id}} {%- endif %}</td>
         <td class="dt-center">
-          {% if tool.topics %} {%- for topic in tool.topics %}
+          {% if tool.edam-topics %} {%- for topic in tool.edam-topics %}
           <button
             class="btn btn-light badge border border-dark text-dark mb-2 text-wrap text-center topic-badge"
           >
