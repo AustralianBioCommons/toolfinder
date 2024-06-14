@@ -43,9 +43,9 @@
   url: https://support.pawsey.org.au/portal/servicedesk/customer/user/login?destination=portals
   name: Pawsey Supercomputing Centre (Pawsey)
 - id: rcc-new-tool
-  description: Request a tool for QRIS-Cloud / UQ-RCC by completing a tool install request at the link below.
+  description: Request a tool for QRIScloud / UQ-RCC by completing a tool install request at the link below.
   url: https://support.qcif.edu.au/Request-for-installation-of-QRIScloud-HPC
-  name: QRIS-Cloud / UQ-RCC
+  name: QRIScloud / UQ-RCC
 
 - id: bunya
   description: Supercomputer located at the University of Queensland.
