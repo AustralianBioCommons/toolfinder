@@ -8,7 +8,7 @@ toc: true
 
 ## About
 
-The purpose of ToolFinder is to present a landscape view of bioinformatics software packages & tools 
+ToolFinder's purpose is to present a landscape view of bioinformatics software packages & tools 
 installed across Australian national computational infrastructures, including:
 
 - {% tool "gadi" %} and {% tool "nci-if89-new-tool" %} at the [National Computational Infrastructure](https://nci.org.au/) (NCI)
@@ -58,12 +58,13 @@ This resource would not be possible without the following contributors.
 
 
 ### Acknowledgements
+This work is supported by the [Australian BioCommons](https://www.biocommons.org.au/) via funding from [Bioplatforms Australia](https://bioplatforms.com/) and the Queensland Government Research Infrastructure Co-investment Fund (RICF) programme. Bioplatforms Australia is funded by the National Collaborative Research Infrastructure Strategy (NCRIS).
 
-This guide makes use of the [ELIXIR toolkit theme](https://github.com/ELIXIR-Belgium/elixir-toolkit-theme)
+ToolFinder makes use of the [ELIXIR toolkit theme](https://github.com/ELIXIR-Belgium/elixir-toolkit-theme)
 
 {% include image.html file="elixir-toolkit-theme_logo.svg" alt="Elixir Toolkit Theme logo" max-width="15em" %}
 
-This work is supported by the [Australian BioCommons](https://www.biocommons.org.au/) via funding from [Bioplatforms Australia](https://bioplatforms.com/), the [Australian Research Data Commons](https://doi.org/10.47486/PL105) and the Queensland Government Research Infrastructure Co-investment Fund (RICF) programme. Bioplatforms Australia and the Australian Research Data Commons are funded by the National Collaborative Research Infrastructure Strategy (NCRIS).
+
 
 
 ### References
