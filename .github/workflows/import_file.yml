@@ -2,7 +2,6 @@ name: Pull data.yml from australianbiocommons.github.io
 
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   pull-file:
@@ -28,18 +27,15 @@ jobs:
         run: |
           rm -r temporary_folder 
 
-      - name: Check for changes
+      - name: Commit if updated
         run: |
-          if git diff --quiet; then
-            echo "There is no change in data.yaml."
-            echo "exiting = true" >> $GITHUB_ENV
-          fi
-
-      - name: Commit
-        if: env.exiting != 'true'
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add _data/data.yaml
-          git commit -m "Updated the data.yml sourced from australianbiocommons.github.io"
-          git push
+          git diff-index --quiet HEAD || git commit -m "Updated the data.yml sourced from australianbiocommons.github.io"
+
+      - name: Push if changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
