@@ -159,11 +159,11 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         instances_tool = instances_tool | plus: instance_matches.size %} {%-
         endunless %} {%- endfor %}
         <td>
-          <div>
-            {% if tool.homepage %}
-            <a href="{{tool.homepage}}">{{tool.name}}</a>
-            {%- else %} {{tool.name}} {%- endif %}
-          </div>
+        <div>
+	      {% if tool.homepage != "" %}
+	      <a href="{{tool.homepage}}">{{tool.name}}</a>
+	      {%- else %} {{tool.name}} {%- endif %}
+        </div>
         </td>
         <td>{% if tool.description %} {{tool.description}} {%- endif %}</td>
         <td class="dt-center">
