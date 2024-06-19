@@ -160,7 +160,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         endunless %} {%- endfor %}
         <td>
         <div>
-	      {% if tool.homepage != "" %}
+	      {% if tool.homepage %}
 	      <a href="{{tool.homepage}}">{{tool.name}}</a>
 	      {%- else %} {{tool.name}} {%- endif %}
         </div>
