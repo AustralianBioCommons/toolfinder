@@ -160,9 +160,11 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         endunless %} {%- endfor %}
         <td>
         <div>
-	      {% if tool.homepage %}
-	      <a href="{{tool.homepage}}">{{tool.name}}</a>
-	      {%- else %} {{tool.name}} {%- endif %}
+          {% if tool.homepage != "" %}
+          <a href="{{ tool.homepage }}">{{ tool.name }}</a>
+          {% else %}
+          <a href="#" class="no-link">{{ tool.name }}</a>
+          {% endif %}
         </div>
         </td>
         <td>{% if tool.description %} {{tool.description}} {%- endif %}</td>
@@ -383,6 +385,9 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
     table.buttons().container().prependTo("#DataTables_Table_0_length");
     document.querySelector(".spinner-container").style.display = "none";
     document.getElementById("tool-table").classList.remove("d-none");
+
+    // Event listener for noLinkElements
+    document.addEventListener('DOMContentLoaded', () => { const noLinkElements = document.querySelectorAll('a.no-link'); noLinkElements.forEach(link => { link.addEventListener('click', (event) => { event.preventDefault(); }); }); });
 
     // Event listener for Topic Badges
     table.on("draw", function () {
