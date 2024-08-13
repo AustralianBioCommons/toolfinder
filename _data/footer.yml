@@ -15,7 +15,7 @@ columns:
     src: 'assets/img/BIO-RGB_Full-POS.png'
     alt: Bioplatforms Australia logo
   - type: image
-    image_width: 150px
+    image_width: 110px
     width: 3
     src: 'assets/img/NCRIS-PROVIDER.png'
     alt: Logo for the Australian Government's National Collaborative Research Infrastructure Strategy
