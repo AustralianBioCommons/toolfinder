@@ -257,7 +257,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- endif %}
         </td>
         <td>
-          {%- if tool.galaxy.size > 1 %}
+          {%- if tool.galaxy.size > 3 %}
           <a
             class="text-primary cursor-pointer"
             data-bs-toggle="modal"
@@ -316,7 +316,9 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
             </div>
           </div>
           {%- else %}
-          <a href="{{tool.galaxy[0].url}}">{{tool.galaxy[0].title}}</a>
+          {%- for galaxy-tool in tool.galaxy %}
+          <a href="{{tool.galaxy.url}}">{{tool.galaxy.title}}</a>
+          {%- endfor %}
           {%- endif %}
         </td>
         <td>
