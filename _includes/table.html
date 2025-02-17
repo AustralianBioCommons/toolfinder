@@ -317,13 +317,13 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           </div>
           {%- else %}
           {%- for galaxy-tool in tool.galaxy %}
-          <a class="badge" href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a>
+          <a class="badge text-bg-light text-primary mb-2" href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a>
           {%- endfor %}
           {%- endif %}
         </td>
         <td>
           {% if tool.nci-gadi != blank %} {%- for gadi in tool.nci-gadi %}
-          <span class="badge text-bg-primary mb-2">{{gadi}}</span>
+          <span class="badge text-bg-light mb-2">{{gadi}}</span>
           {%- endfor %} {%- endif %}
         </td>
         <td>
