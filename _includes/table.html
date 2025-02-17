@@ -317,7 +317,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           </div>
           {%- else %}
           {%- for galaxy-tool in tool.galaxy %}
-          <a href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a>
+          <a class="badge" href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a>
           {%- endfor %}
           {%- endif %}
         </td>
