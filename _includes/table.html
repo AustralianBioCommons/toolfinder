@@ -328,7 +328,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         </td>
         <td>
           {% if tool.nci-if89 != blank %} {%- for if89 in tool.nci-if89 %}
-          <span class="badge text-bg-light mb-2">{{nci-if89}}</span>
+          <span class="badge text-bg-light mb-2">{{if89}}</span>
           {%- endfor %} {%- endif %}
         </td>
         <td>
