@@ -22,6 +22,14 @@ ToolFinder also:
 2. Provides connections to other global registries as appropriate, and based on user feedback (e.g. {% tool "biocontainers" %}), and
 3. Provides, where possible, the ability to directly access (or `launch`) bioinformatics tools. The only current example of launching tools is for [Galaxy Australia](https://usegalaxy.org.au/).
 
+Note:
+
+- The **Tool identifier** column (hidden by default) contains an identifier for the tool / workflow: typically the module name (used for matching to HPC lists).
+- The **Topic(s)** column categorises the tools by purpose, using an {% tool "edam" %} concept where possible. 
+- More information about a tool can be found by following the {% tool "biotools" %} links. 
+- When a tool has been containerised to allow for easier installation on any compute infrastructure, a link to the containerised software that can be downloaded from {% tool "biocontainers" %} is shown in the **Containers available? (BioContainers)** column. 
+- The primary source material for the table is manually curated, and while we endeavour to keep the information as current as possible, there is a natural limit to the volume of information maintained here. Production of this information will be automated over time, and tools that are not relevant for bioinformatics analyses removed.
+
 
 ### How was the list generated?
 
