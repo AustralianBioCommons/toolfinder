@@ -8,8 +8,8 @@
     margin-right: 24px;
   }
   .biotools-button {
-    width: 84px;
-    background-color: #ffa500;
+    width: 100px;
+    background-color: #005472;
   }
   .biotools-button:hover {
     opacity: 0.8;
@@ -30,11 +30,18 @@
   }
   .col-publications,
   .col-galaxy,
-  .col-description {
-    min-width: 180px;
+  .col-description,
+  .col-bunya,
+  .col-nci,
+  .col-nci-if89,
+  .col-pawsey,
+  .col-containers {
+    text-align: center;
+    max-width: 400px;
+    min-width: 100px;
   }
   .col-galaxy-description {
-    min-width: 240px;
+    min-width: 300px;
   }
   .col-badge {
     width: 180px !important;
@@ -132,14 +139,14 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         <th>Tool identifier (e.g. module name)</th>
         <th>Topic(s)</th>
         <th class="col-publications">Publications</th>
-        <th>Containers available? (BioContainers)</th>
+        <th class="col-containers">Containers available? (BioContainers)</th>
         <th>License</th>
         <th>Resources / documentation</th>
         <th class="col-galaxy">Galaxy Australia</th>
-        <th>NCI (Gadi)</th>
-        <th>NCI (if89)</th>
-        <th>Pawsey (Setonix)</th>
-        <th class="col-badge">QRIScloud / UQ-RCC (Bunya)</th>
+        <th class="col-nci">NCI (Gadi)</th>
+        <th class="col-nci-if89">NCI (if89)</th>
+        <th class="col-pawsey">Pawsey (Setonix)</th>
+        <th class="col-bunya">QRIScloud / UQ-RCC (Bunya)</th>
       </tr>
     </thead>
     <tbody>
@@ -241,7 +248,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           </a>
           {%- endif %}
         </td>
-        <td>
+        <td class="dt-center">
           {% if tool.biocontainers != blank %}
           <a href="https://biocontainers.pro/tools/{{tool.biocontainers}}">
             {{tool.name}}
@@ -256,7 +263,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           </a>
           {%- endif %}
         </td>
-        <td>
+        <td class="dt-center">
           {%- if tool.galaxy.size > 3 %}
           <a
             class="text-primary cursor-pointer"
@@ -317,28 +324,28 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           </div>
           {%- else %}
           {%- for galaxy-tool in tool.galaxy %}
-          <a class="badge text-bg-light text-primary mb-2" href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a>
+          <a class="badge text-bg-light text-primary text-center mb-2 text-wrap" href="{{galaxy-tool.url}}">{{galaxy-tool.title}}</a>
           {%- endfor %}
           {%- endif %}
         </td>
-        <td>
+        <td class="dt-center">
           {% if tool.nci-gadi != blank %} {%- for gadi in tool.nci-gadi %}
-          <span class="badge text-bg-light mb-2">{{gadi}}</span>
+          <span class="badge text-bg-light mb-2 text-center text-wrap">{{gadi}}</span>
           {%- endfor %} {%- endif %}
         </td>
-        <td>
+        <td class="dt-center">
           {% if tool.nci-if89 != blank %} {%- for if89 in tool.nci-if89 %}
-          <span class="badge text-bg-light mb-2">{{if89}}</span>
+          <span class="badge text-bg-light mb-2 text-center text-wrap">{{if89}}</span>
           {%- endfor %} {%- endif %}
         </td>
-        <td>
+        <td class="dt-center">
           {% if tool.pawsey != blank %} {%- for pawsey in tool.pawsey %}
-          <span class="badge text-bg-light mb-2">{{pawsey}}</span>
+          <span class="badge text-bg-light mb-2 text-center text-wrap">{{pawsey}}</span>
           {%- endfor %} {%- endif %}
         </td>
-        <td>
+        <td class="dt-center">
           {% if tool.bunya != blank %} {%- for bunya in tool.bunya %}
-          <span class="badge text-bg-light mb-2 text-wrap word-break">
+          <span class="badge text-bg-light mb-2 text-center text-wrap">
             {{bunya}}
           </span>
           {%- endfor %} {%- endif %}
