@@ -11,7 +11,7 @@ toc: true
 ToolFinder's purpose is to present a landscape view of bioinformatics software packages & tools 
 installed across Australian national computational infrastructures, including:
 
-- {% tool "gadi" %} and {% tool "nci-if89-new-tool" %} at the [National Computational Infrastructure](https://nci.org.au/) (NCI)
+- {% tool "gadi" %} and {% tool "nci-if89" %} at the [National Computational Infrastructure](https://nci.org.au/) (NCI)
 - {% tool "setonix" %} at [Pawsey Supercomputing Centre](https://pawsey.org.au/) (Pawsey)
 - {% tool "bunya" %} at [Queensland Cyber Infrastructure Foundation](https://www.qcif.edu.au/) (QCIF) / [QRISCloud](https://www.qriscloud.org.au/)
 - {% tool "galaxy-australia" %}
@@ -24,10 +24,10 @@ ToolFinder also:
 
 Note:
 
-- The **Tool identifier** column (hidden by default) contains an identifier for the tool / workflow: typically the module name (used for matching to HPC lists).
-- The **Topic(s)** column categorises the tools by purpose, using an {% tool "edam" %} concept where possible. 
+- The `Tool identifier` column (hidden by default) contains an identifier for the tool / workflow: typically the module name (used for matching to HPC lists).
+- The `Topic(s)` column categorises the tools by purpose, using an {% tool "edam" %} concept where possible. 
 - More information about a tool can be found by following the {% tool "biotools" %} links. 
-- When a tool has been containerised to allow for easier installation on any compute infrastructure, a link to the containerised software that can be downloaded from {% tool "biocontainers" %} is shown in the **Containers available? (BioContainers)** column. 
+- When a tool has been containerised to allow for easier installation on any compute infrastructure, a link to the containerised software that can be downloaded from {% tool "biocontainers" %} is shown in the `Containers available? (BioContainers)` column. 
 - The primary source material for the table is manually curated, and while we endeavour to keep the information as current as possible, there is a natural limit to the volume of information maintained here. Production of this information will be automated over time, and tools that are not relevant for bioinformatics analyses removed.
 
 
@@ -77,6 +77,10 @@ ToolFinder makes use of the [ELIXIR toolkit theme](https://github.com/ELIXIR-Bel
 
 ### References
 
-- Metadata integration for ToolFinder service: [https://github.com/AustralianBioCommons/australianbiocommons.github.io](https://github.com/AustralianBioCommons/australianbiocommons.github.io)
-- Tool metadata source: [bio.tools API](https://biotools.readthedocs.io/en/latest/api_reference.html), Ison, J. *et al.* (2015). Tools and data services registry: a community effort to document bioinformatics resources. Nucleic Acids Research. [https://doi.org/10.1093/nar/gkv1116](https://doi.org/10.1093/nar/gkv1116)
-- Ontology used: [EDAM](https://github.com/edamontology/edamontology), Ison, J., Kalaš, M., Jonassen, I., Bolser, D., Uludag, M., McWilliam, H., Malone, J., Lopez, R., Pettifer, S. and Rice, P. 2013. EDAM: an ontology of bioinformatics operations, types of data and identifiers, topics and formats. Bioinformatics, 29(10): 1325-1332. [https://doi.org/10.1093/bioinformatics/btt113](https://doi.org/10.1093/bioinformatics/btt113) PMID: 23479348 *Open Access*
+Metadata integration for ToolFinder service: [https://github.com/AustralianBioCommons/australianbiocommons.github.io](https://github.com/AustralianBioCommons/australianbiocommons.github.io)
+
+Tool metadata source: [bio.tools API](https://biotools.readthedocs.io/en/latest/api_reference.html)
+> Ison, J. *et al.* (2015). Tools and data services registry: a community effort to document bioinformatics resources. Nucleic Acids Research. [https://doi.org/10.1093/nar/gkv1116](https://doi.org/10.1093/nar/gkv1116)
+
+Ontology used: [EDAM](https://github.com/edamontology/edamontology)
+> Ison, J., Kalaš, M., Jonassen, I., Bolser, D., Uludag, M., McWilliam, H., Malone, J., Lopez, R., Pettifer, S. and Rice, P. 2013. EDAM: an ontology of bioinformatics operations, types of data and identifiers, topics and formats. Bioinformatics, 29(10): 1325-1332. [https://doi.org/10.1093/bioinformatics/btt113](https://doi.org/10.1093/bioinformatics/btt113) PMID: 23479348 *Open Access*
