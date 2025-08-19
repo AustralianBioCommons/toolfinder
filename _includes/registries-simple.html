@@ -2,13 +2,14 @@
 
 <div class="d-flex flex-column">
   <div class="mb-2">
+      {% assign collapse_id = "collapse-" | append: include.type %}
     <button
       class="btn btn-secondary text-light"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#collapse1"
+      data-bs-target="#{{ collapse_id }}"
       aria-expanded="false"
-      aria-controls="collapseExample"
+      aria-controls="{{ collapse_id }}"
     >
         {%- if include.type == "registry" %}
       Can’t find the software you need? Click here to see other options for
@@ -19,7 +20,7 @@
         {%- endif %}
       <i class="fa-solid fa-circle-chevron-down ms-1"></i>
     </button>
-    <div class="collapse" id="collapse1">
+    <div class="collapse" id="{{ collapse_id }}">
         <div class="simple-tiles">
             <div class="simple-tiles-container">
                 <div class="simple-tiles-list gy-2 gx-4 my-4">
