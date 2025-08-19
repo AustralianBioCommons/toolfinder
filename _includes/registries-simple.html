@@ -1,0 +1,86 @@
+{%- assign resource_list = site.data.tool_and_resource_list %}
+
+<div class="d-flex flex-column">
+  <div class="mb-2">
+    <button
+      class="btn btn-secondary text-light"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapse1"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+        {%- if include.type == "registry" %}
+      Can’t find the software you need? Click here to see other options for
+      finding software.
+        {%- else %}
+        Click to find out how to request installation of software on ToolFinder
+      listed infrastructures.
+        {%- endif %}
+      <i class="fa-solid fa-circle-chevron-down ms-1"></i>
+    </button>
+    <div class="collapse" id="collapse1">
+        <div class="simple-tiles">
+            <div class="simple-tiles-container">
+                <div class="simple-tiles-list gy-2 gx-4 my-4">
+                {%- for item in resource_list %}
+                    {%- if item.type == include.type %}
+                        <a href="{{ item.url | relative_url }}" class="simple-tile-link">
+                            <div class="simple-tile-item">
+                                <div class="simple-tile-content">
+                                    <p class="simple-tile-title" style="font-size: 1rem; text-align: left">{{ item.name }} </p>
+                                    <p class="simple-tile-desc" style="font-size: 0.8rem; text-align: left">{{ item.description }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    {%- endif %}
+                {%- endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+
+  .simple-tile-link {
+          text-decoration: none;
+          color: inherit;
+  }
+
+  .simple-tile-item {
+           border: 1px solid #e0e0e0;
+           border-radius: 12px;
+           padding: 5px;
+           padding-left: 20px;
+           padding-right: 20px;
+           transition: all 0.3s ease;
+           background: #5ac3b1;
+           width: 100%;
+  }
+
+  .simple-tile-item:hover {
+           transform: translateY(-4px);
+           box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+           border-color: #012152;
+  }
+
+  .simple-tile-title {
+           color: #ffffff;
+           font-weight: 700;
+           margin-top: 0px;
+           margin-bottom: 0px;
+  }
+
+  .simple-tile-desc {
+           color: #ffffff;
+           font-weight: 400;
+           margin-top: 0px;
+           margin-bottom: 0px;
+  }
+
+</style>
+
