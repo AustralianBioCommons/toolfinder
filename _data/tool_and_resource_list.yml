@@ -42,9 +42,14 @@
   name: National Computational Infrastructure (NCI)
 - id: nci-if89-new-tool
   type: install
-  description: Request software installation for the Australian BioCommons Tools and Workflows repository at NCI (project `if89`) via the link below, or contribute to project `if89` by adding more tools that will be shared with other NCI users - https://australianbiocommons.github.io/ables/if89/.
+  description: Request software installation for the Australian BioCommons Tools and Workflows repository at NCI (project `if89`).
   url: https://docs.google.com/forms/d/e/1FAIpQLScpiyqERdxw6gMxjlq_CkiI3qvJ60YaeWHKTJChMjcnv8aBBA/viewform?usp=sf_link
-  name: Australian BioCommons Tools and Workflows repository at NCI (project `if89`)
+  name: Request tool for Australian BioCommons Tools and Workflows repository at NCI (project `if89`)
+- id: nci-if89-contribute-new-tool
+  type: install
+  description: Contribute to the Australian BioCommons Tools and Workflows repository at NCI (project `if89`) by adding more tools that will be shared with other NCI users.
+  url: https://australianbiocommons.github.io/ables/if89/
+  name: Contribute to Australian BioCommons Tools and Workflows repository at NCI (project `if89`)
 - id: pawsey-new-tool
   type: install
   description: Request a tool for Pawsey Supercomputing Centre (Pawsey) by visiting the Helpdesk Portal at the link below, or email `help@pawsey.org.au` with your request.
