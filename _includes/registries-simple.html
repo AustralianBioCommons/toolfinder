@@ -4,7 +4,8 @@
   <div class="mb-2">
       {% assign collapse_id = "collapse-" | append: include.type %}
     <button
-      class="btn btn-secondary text-light"
+      class="btn text-light"
+      style="background: #f49f1d"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#{{ collapse_id }}"
@@ -12,11 +13,11 @@
       aria-controls="{{ collapse_id }}"
     >
         {%- if include.type == "registry" %}
-      Can’t find the software you need? Click here to see other options for
-      finding software.
+            Can’t find the software you need? Click here to see other options for
+            finding software.
         {%- else %}
-        Click to find out how to request installation of software on ToolFinder
-      listed infrastructures.
+            Click to find out how to request installation of software on ToolFinder
+            listed infrastructures.
         {%- endif %}
       <i class="fa-solid fa-circle-chevron-down ms-1"></i>
     </button>
@@ -26,14 +27,12 @@
                 <div class="simple-tiles-list gy-2 gx-4 my-4">
                 {%- for item in resource_list %}
                     {%- if item.type == include.type %}
-                        <a href="{{ item.url | relative_url }}" class="simple-tile-link">
-                            <div class="simple-tile-item">
-                                <div class="simple-tile-content">
+                        <div class="simple-tile-item">
+                            <a href="{{ item.url | relative_url }}" class="simple-tile-link">
                                     <p class="simple-tile-title" style="font-size: 1rem; text-align: left">{{ item.name }} </p>
                                     <p class="simple-tile-desc" style="font-size: 0.8rem; text-align: left">{{ item.description }}</p>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     {%- endif %}
                 {%- endfor %}
                 </div>
@@ -53,13 +52,12 @@
   }
 
   .simple-tile-item {
-           border: 1px solid #e0e0e0;
            border-radius: 12px;
            padding: 5px;
            padding-left: 20px;
            padding-right: 20px;
            transition: all 0.3s ease;
-           background: #5ac3b1;
+           background: #f8f9fa;
            width: 100%;
   }
 
@@ -70,14 +68,14 @@
   }
 
   .simple-tile-title {
-           color: #ffffff;
+           color: #205a86;
            font-weight: 700;
            margin-top: 0px;
            margin-bottom: 0px;
   }
 
   .simple-tile-desc {
-           color: #ffffff;
+           color: #205a86;
            font-weight: 400;
            margin-top: 0px;
            margin-bottom: 0px;
