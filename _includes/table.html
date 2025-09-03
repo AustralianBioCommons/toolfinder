@@ -167,7 +167,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         endunless %} {%- endfor %}
         <td>
         <div>
-          {% if tool.homepage != "" %}
+          {% if tool.homepage != None %}
           <a href="{{ tool.homepage }}">{{ tool.name }}</a>
           {% else %}
           <a href="#" class="no-link">{{ tool.name }}</a>
@@ -176,7 +176,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
         </td>
         <td>{% if tool.description %} {{tool.description}} {%- endif %}</td>
         <td class="dt-center">
-          {% if tool.biotools != blank %}
+          {% if tool.biotools != None %}
           <a
             href="https://bio.tools/{{tool.biotools}}"
             class="badge text-center px-1 biotools-button"
@@ -249,13 +249,13 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- endif %}
         </td>
         <td class="dt-center">
-          {% if tool.biocontainers != blank %}
+          {% if tool.biocontainers != None %}
           <a href="https://biocontainers.pro/tools/{{tool.biocontainers}}">
             {{tool.name}}
           </a>
           {%- endif %}
         </td>
-        <td>{% if tool.license != blank %} {{tool.license}} {%- endif %}</td>
+        <td>{% if tool.license != None %} {{tool.license}} {%- endif %}</td>
         <td>
           {% if tool.resource-documentation == tool.resource-documentation %}
           <a href="{{tool.resource-documentation}}">
@@ -329,22 +329,22 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
           {%- endif %}
         </td>
         <td class="dt-center">
-          {% if tool.nci-gadi != blank %} {%- for gadi in tool.nci-gadi %}
+          {% if tool.nci-gadi != None %} {%- for gadi in tool.nci-gadi %}
           <span class="badge text-bg-light mb-2 text-center text-wrap">{{gadi}}</span>
           {%- endfor %} {%- endif %}
         </td>
         <td class="dt-center">
-          {% if tool.nci-if89 != blank %} {%- for if89 in tool.nci-if89 %}
+          {% if tool.nci-if89 != None %} {%- for if89 in tool.nci-if89 %}
           <span class="badge text-bg-light mb-2 text-center text-wrap">{{if89}}</span>
           {%- endfor %} {%- endif %}
         </td>
         <td class="dt-center">
-          {% if tool.pawsey != blank %} {%- for pawsey in tool.pawsey %}
+          {% if tool.pawsey != None %} {%- for pawsey in tool.pawsey %}
           <span class="badge text-bg-light mb-2 text-center text-wrap">{{pawsey}}</span>
           {%- endfor %} {%- endif %}
         </td>
         <td class="dt-center">
-          {% if tool.bunya != blank %} {%- for bunya in tool.bunya %}
+          {% if tool.bunya != None %} {%- for bunya in tool.bunya %}
           <span class="badge text-bg-light mb-2 text-center text-wrap">
             {{bunya}}
           </span>
