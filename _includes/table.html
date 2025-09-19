@@ -377,7 +377,7 @@ nil" %} {%- unless tools.size == 0 or tools == nil %} {%- if include.tag %}
   $(document).ready(function () {
     const table = $("#DataTables_Table_0").DataTable();
     table.page.len(50);
-    table.columns([1, 3, 7, 8]).visible(false);
+    table.columns([1, 3, 7, 8, 10]).visible(false);
     new $.fn.dataTable.Buttons(table, {
       buttons: [
         {
