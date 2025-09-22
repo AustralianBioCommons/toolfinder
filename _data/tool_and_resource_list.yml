@@ -32,12 +32,12 @@
 
 - id: galaxy-new-tool
   type: install
-  description: Request a tool for Galaxy Australia by visiting the link below.
+  description: Request a tool for Galaxy Australia by clicking this link.
   url: https://site.usegalaxy.org.au/request/tool
   name: Galaxy Australia
 - id: nci-new-tool
   type: install
-  description: Request a tool for the National Computational Infrastructure (NCI) by visiting the link below, and contacting NCI if needed.
+  description: Request a tool for the National Computational Infrastructure (NCI) by clicking this link, and contacting NCI if needed.
   url: https://opus.nci.org.au/display/Help/5.+Software+Applications
   name: National Computational Infrastructure (NCI)
 - id: nci-if89
@@ -57,12 +57,12 @@
   name: Contribute to Australian BioCommons Tools and Workflows repository at NCI (project `if89`)
 - id: pawsey-new-tool
   type: install
-  description: Request a tool for Pawsey Supercomputing Centre (Pawsey) by visiting the Helpdesk Portal at the link below, or email `help@pawsey.org.au` with your request.
+  description: Request a tool for Pawsey Supercomputing Centre (Pawsey) by visiting the linked Helpdesk Portal, or email help@pawsey.org.au with your request.
   url: https://support.pawsey.org.au/portal/servicedesk/customer/user/login?destination=portals
   name: Pawsey Supercomputing Centre (Pawsey)
 - id: rcc-new-tool
   type: install
-  description: Request a tool for QRIScloud / UQ-RCC by completing a tool install request at the link below.
+  description: Request a tool for QRIScloud / UQ-RCC by completing this tool install request.
   url: https://support.qcif.edu.au/Request-for-installation-of-QRIScloud-HPC
   name: QRIScloud / UQ-RCC
 
@@ -78,7 +78,7 @@
   name: Gadi
 - id: setonix
   type: system
-  description: Supercomputer located at Pawsey Supercomputing Centre (Pawsey).
+  description: Supercomputer located at Pawsey Supercomputing Research Centre (Pawsey).
   url: https://pawsey.org.au/systems/setonix/
   name: Setonix
 - id: galaxy-australia

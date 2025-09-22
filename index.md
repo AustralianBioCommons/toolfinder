@@ -1,5 +1,5 @@
 ---
-description: Add a plain text description here.
+description: This page lists bioinformatics tools and software that are installed across several of the BioCommons infrastructure partner systems, including Gadi (NCI), Australian BioCommons Tools and Workflows repository at NCI (project if89), Setonix (Pawsey), Bunya (QRIScloud / UQ-RCC), and Galaxy Australia.
 sidebar: false
 datatable: true
 toc: false

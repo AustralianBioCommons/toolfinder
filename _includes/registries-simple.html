@@ -29,7 +29,7 @@
                     {%- if item.type == include.type %}
                         <div class="simple-tile-item">
                             <a href="{{ item.url | relative_url }}" class="simple-tile-link">
-                                    <p class="simple-tile-title" style="font-size: 1rem; text-align: left">{{ item.name }} </p>
+                                    <p class="simple-tile-title" style="font-size: 1rem; text-align: left">{{ item.name }}</p>
                                     <p class="simple-tile-desc" style="font-size: 0.8rem; text-align: left">{{ item.description }}</p>
                             </a>
                         </div>
@@ -41,45 +41,4 @@
     </div>
   </div>
 </div>
-
-
-
-<style>
-
-  .simple-tile-link {
-          text-decoration: none;
-          color: inherit;
-  }
-
-  .simple-tile-item {
-           border-radius: 12px;
-           padding: 5px;
-           padding-left: 20px;
-           padding-right: 20px;
-           transition: all 0.3s ease;
-           background: #f8f9fa;
-           width: 100%;
-  }
-
-  .simple-tile-item:hover {
-           transform: translateY(-4px);
-           box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-           border-color: #012152;
-  }
-
-  .simple-tile-title {
-           color: #205a86;
-           font-weight: 700;
-           margin-top: 0px;
-           margin-bottom: 0px;
-  }
-
-  .simple-tile-desc {
-           color: #205a86;
-           font-weight: 400;
-           margin-top: 0px;
-           margin-bottom: 0px;
-  }
-
-</style>
 

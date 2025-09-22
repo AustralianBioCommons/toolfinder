@@ -61,3 +61,39 @@ h2 {
 
 a.no-link { color: inherit; text-decoration: none; cursor: default; pointer-events: none; }
 a.no-link:hover { color: inherit; text-decoration: none; }
+
+
+.simple-tile-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.simple-tile-item {
+    border-radius: 12px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    width: 100%;
+}
+
+.simple-tile-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-color: #012152;
+}
+
+.simple-tile-title {
+    color: #205a86;
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.simple-tile-desc {
+    color: #205a86;
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

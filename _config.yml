@@ -7,7 +7,7 @@ topnav_title: ToolFinder
 description: "ToolFinder"
 # Metadata description of the website
 
-remote_theme: ELIXIR-Belgium/elixir-toolkit-theme
+remote_theme: ELIXIR-Belgium/elixir-toolkit-theme@search-config
 gtag: G-T8GWK081T9
 
 theme_variables:
@@ -15,6 +15,7 @@ theme_variables:
   theme_color: 205a86
   topnav:
     brand_logo: assets/img/Australian-Biocommons-Logo-Horizontal-Reversed-RGB.png
+    search: false
 
 exclude:
   - README.md
