@@ -26,9 +26,14 @@
   name: Galaxy Tool Shed
 - id: dockstore-tools
   type: registry
-  description: Search for tools in the Dockstore registry.
+  description: Search for tools and workflows in the Dockstore registry.
   url: https://dockstore.org/search?entryType=tools&searchMode=files
-  name: Dockstore tool search
+  name: Dockstore
+- id: workflowhub
+  type: registry
+  description: Search for computational workflows in the WorkflowHub registry.
+  url: https://workflowhub.eu/
+  name: WorkflowHub
 
 - id: galaxy-new-tool
   type: install
