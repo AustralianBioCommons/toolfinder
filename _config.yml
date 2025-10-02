@@ -7,7 +7,7 @@ topnav_title: ToolFinder
 description: "ToolFinder"
 # Metadata description of the website
 
-remote_theme: ELIXIR-Belgium/elixir-toolkit-theme@search-config
+remote_theme: ELIXIR-Belgium/elixir-toolkit-theme
 gtag: G-T8GWK081T9
 
 theme_variables:
