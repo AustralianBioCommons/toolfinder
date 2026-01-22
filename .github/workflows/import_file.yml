@@ -1,4 +1,4 @@
-name: Pull data.yml from australianbiocommons.github.io
+name: Pull data.yml from finder-service-metadata
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
         with:
-          repository: AustralianBioCommons/australianbiocommons.github.io
+          repository: AustralianBioCommons/finder-service-metadata
           path: temporary_folder
 
       - name: Update
@@ -32,7 +32,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add _data/data.yaml
-          git diff-index --quiet HEAD || git commit -m "Updated the data.yml sourced from australianbiocommons.github.io"
+          git diff-index --quiet HEAD || git commit -m "Updated the data.yml sourced from finder-service-metadata"
 
       - name: Push if changes
         uses: ad-m/github-push-action@v0.6.0
