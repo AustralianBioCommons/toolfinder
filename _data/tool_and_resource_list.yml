@@ -27,7 +27,7 @@
 - id: dockstore-tools
   type: registry
   description: Search for tools and workflows in the Dockstore registry.
-  url: https://dockstore.org/search?entryType=tools&searchMode=files
+  url: https://dockstore.org/
   name: Dockstore
 - id: workflowhub
   type: registry
@@ -45,11 +45,6 @@
   description: Request a tool for the National Computational Infrastructure (NCI) by clicking this link, and contacting NCI if needed.
   url: https://opus.nci.org.au/display/Help/5.+Software+Applications
   name: National Computational Infrastructure (NCI)
-- id: nci-if89
-  type: install
-  description: Users at NCI also have access to this repository of popular tools, containers, and workflows that can be used by anyone in the NCI system. Anyone from an NCI project is also invited to contribute to `if89`, and add more software installations that can be shared with others.
-  url: https://australianbiocommons.github.io/ables/if89/
-  name: Australian BioCommons Tools and Workflows repository at NCI (project `if89`)
 - id: nci-if89-new-tool
   type: install
   description: Request software installation for the Australian BioCommons Tools and Workflows repository at NCI (project `if89`).
