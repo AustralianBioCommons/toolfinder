@@ -76,6 +76,10 @@
   description: Supercomputer located at the National Computational Infrastructure (NCI).
   url: https://nci.org.au/our-systems/hpc-systems
   name: Gadi
+- id: nci-if89
+  description: Users at NCI also have access to this repository of popular tools, containers, and workflows that can be used by anyone in the NCI system. Anyone from an NCI project is also invited to contribute to `if89`, and add more software installations that can be shared with others.
+  url: https://australianbiocommons.github.io/ables/if89/
+  name: Australian BioCommons Tools and Workflows repository at NCI (project `if89`)
 - id: setonix
   type: system
   description: Supercomputer located at Pawsey Supercomputing Research Centre (Pawsey).
